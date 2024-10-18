@@ -1,0 +1,32 @@
+kind = "DojoModel"
+class_hash = "0x2b1b7a75d91a6394bbdb05bfd056b02bc7097b8a4e07faa368fe173e5614b67"
+original_class_hash = "0x2b1b7a75d91a6394bbdb05bfd056b02bc7097b8a4e07faa368fe173e5614b67"
+abi = "manifests/slot/base/abis/models/conquest-AchievementCompletion-1d044dbd.json"
+tag = "conquest-AchievementCompletion"
+qualified_path = "achievement::events::index::achievement_completion"
+manifest_name = "conquest-AchievementCompletion-1d044dbd"
+
+[[members]]
+name = "namespace"
+type = "felt252"
+key = true
+
+[[members]]
+name = "identifier"
+type = "felt252"
+key = true
+
+[[members]]
+name = "player_id"
+type = "felt252"
+key = true
+
+[[members]]
+name = "progress"
+type = "u32"
+key = false
+
+[[members]]
+name = "time"
+type = "u64"
+key = false

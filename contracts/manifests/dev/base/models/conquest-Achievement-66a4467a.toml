@@ -1,0 +1,37 @@
+kind = "DojoModel"
+class_hash = "0x191e3695abef2e8c3db7e4d32f38d6b43eda5de2c7397daf8406f6959b3d807"
+original_class_hash = "0x191e3695abef2e8c3db7e4d32f38d6b43eda5de2c7397daf8406f6959b3d807"
+abi = "manifests/dev/base/abis/models/conquest-Achievement-66a4467a.json"
+tag = "conquest-Achievement"
+qualified_path = "achievement::models::index::achievement"
+manifest_name = "conquest-Achievement-66a4467a"
+
+[[members]]
+name = "world_address"
+type = "felt252"
+key = true
+
+[[members]]
+name = "namespace"
+type = "felt252"
+key = true
+
+[[members]]
+name = "id"
+type = "felt252"
+key = true
+
+[[members]]
+name = "published"
+type = "bool"
+key = false
+
+[[members]]
+name = "whitelisted"
+type = "bool"
+key = false
+
+[[members]]
+name = "karma"
+type = "u16"
+key = false

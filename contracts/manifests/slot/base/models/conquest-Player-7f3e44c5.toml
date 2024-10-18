@@ -1,0 +1,17 @@
+kind = "DojoModel"
+class_hash = "0x61dfb2d3cbcbd5c227b5f18739baf61aa8e05050e3745caa9c718e78ee3ff8a"
+original_class_hash = "0x61dfb2d3cbcbd5c227b5f18739baf61aa8e05050e3745caa9c718e78ee3ff8a"
+abi = "manifests/slot/base/abis/models/conquest-Player-7f3e44c5.json"
+tag = "conquest-Player"
+qualified_path = "conquest::models::index::player"
+manifest_name = "conquest-Player-7f3e44c5"
+
+[[members]]
+name = "id"
+type = "felt252"
+key = true
+
+[[members]]
+name = "name"
+type = "felt252"
+key = false

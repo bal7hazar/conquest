@@ -1,0 +1,3 @@
+tag = "conquest-Actions"
+writes = ["conquest-Player", "conquest-Tile"]
+init_calldata = []

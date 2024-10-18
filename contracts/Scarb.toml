@@ -1,0 +1,24 @@
+[package]
+cairo-version = "=2.7.0"
+name = "conquest"
+version = "0.0.0"
+
+[cairo]
+sierra-replace-ids = true
+
+[scripts]
+dev = "sozo clean && sozo build --typescript && sozo migrate plan && sozo migrate apply"
+
+[dependencies]
+dojo = { git = "https://github.com/dojoengine/dojo", tag = "v1.0.0-alpha.14" }
+achievement = { git = "https://github.com/cartridge-gg/quest", rev = "ada22f6" }
+
+[[target.dojo]]
+build-external-contracts = [
+    "achievement::models::index::Game",
+    "achievement::models::index::Achievement",
+    "achievement::events::index::AchievementCreation",
+    "achievement::events::index::AchievementCompletion",
+]
+
+[profile.slot]

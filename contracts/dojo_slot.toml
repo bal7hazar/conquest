@@ -1,0 +1,20 @@
+[world]
+name = "Conquest"
+description = "Dojo Quests Example"
+website = "https://github.com/dojoengine/dojo"
+seed = "conquest"
+
+[world.socials]
+x = "https://x.com/ohayo_dojo"
+discord = "https://discord.gg/FB2wR6uF"
+github = "https://github.com/dojoengine/dojo-starter"
+telegram = "https://t.me/dojoengine"
+
+[namespace]
+default = "conquest"
+mappings = { "achievement" = "conquest" }
+
+[env]
+rpc_url = "https://api.cartridge.gg/x/conquest/katana"
+account_address = "0x79e1341bc8e27b2ae2544fe902f0c9e723cfba8e37c47371d90385cc17265cc"
+private_key = "0x506a3b48830c89357283236d8724f68d014d681499b2256e7589c950a4198c5"

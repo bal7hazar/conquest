@@ -1,0 +1,22 @@
+kind = "DojoModel"
+class_hash = "0x41b0571ceebfa248e7bc539e5c7a1accf7dcdee20e393c8be904b927ffe6dc9"
+original_class_hash = "0x41b0571ceebfa248e7bc539e5c7a1accf7dcdee20e393c8be904b927ffe6dc9"
+abi = "manifests/dev/base/abis/models/conquest-Tile-22fbeffd.json"
+tag = "conquest-Tile"
+qualified_path = "conquest::models::index::tile"
+manifest_name = "conquest-Tile-22fbeffd"
+
+[[members]]
+name = "id"
+type = "u32"
+key = true
+
+[[members]]
+name = "player_id"
+type = "felt252"
+key = false
+
+[[members]]
+name = "time"
+type = "u64"
+key = false

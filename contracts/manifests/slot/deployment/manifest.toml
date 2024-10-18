@@ -1,0 +1,287 @@
+[world]
+kind = "WorldContract"
+class_hash = "0x6f38d5d9507c5d9546290e1a27e309efe5a9af3770b6cc1627db4a1b90a7dce"
+original_class_hash = "0x6f38d5d9507c5d9546290e1a27e309efe5a9af3770b6cc1627db4a1b90a7dce"
+abi = "manifests/slot/deployment/abis/dojo-world.json"
+address = "0x684d1e701e054d931905a5dc2ebdf68eb5aab29d229cc22bee3859e85b4206c"
+transaction_hash = "0x3f7fc6e67ef451ed44c8b76b942814019a3b61010fff1f47398ae25f403ff90"
+block_number = 3
+seed = "conquest"
+manifest_name = "dojo-world"
+
+[world.metadata]
+profile_name = "slot"
+rpc_url = "https://api.cartridge.gg/x/conquest/katana"
+
+[base]
+kind = "Class"
+class_hash = "0x2427dd10a58850ac9a5ca6ce04b7771b05330fd18f2e481831ad903b969e6b2"
+original_class_hash = "0x2427dd10a58850ac9a5ca6ce04b7771b05330fd18f2e481831ad903b969e6b2"
+abi = "manifests/slot/deployment/abis/dojo-base.json"
+tag = "dojo-base"
+manifest_name = "dojo-base"
+
+[[contracts]]
+kind = "DojoContract"
+address = "0x4fc69557e6ddfa9b89ac558d2a126b47423fa295f4bd34b527c7bb548cbe5a2"
+class_hash = "0x20ba0b7e0a8d0562bb9225dcbc1dc3340c4673cc0ab9c1d86490c3d3432929b"
+original_class_hash = "0x20ba0b7e0a8d0562bb9225dcbc1dc3340c4673cc0ab9c1d86490c3d3432929b"
+base_class_hash = "0x2427dd10a58850ac9a5ca6ce04b7771b05330fd18f2e481831ad903b969e6b2"
+abi = "manifests/slot/deployment/abis/contracts/conquest-Actions-4c864b1c.json"
+reads = []
+writes = [
+    "conquest-Player",
+    "conquest-Tile",
+]
+init_calldata = []
+tag = "conquest-Actions"
+systems = [
+    "signup",
+    "conquest",
+    "verify",
+]
+manifest_name = "conquest-Actions-4c864b1c"
+
+[[models]]
+kind = "DojoModel"
+class_hash = "0x191e3695abef2e8c3db7e4d32f38d6b43eda5de2c7397daf8406f6959b3d807"
+original_class_hash = "0x191e3695abef2e8c3db7e4d32f38d6b43eda5de2c7397daf8406f6959b3d807"
+abi = "manifests/slot/deployment/abis/models/conquest-Achievement-66a4467a.json"
+tag = "conquest-Achievement"
+qualified_path = "achievement::models::index::achievement"
+manifest_name = "conquest-Achievement-66a4467a"
+
+[[models.members]]
+name = "world_address"
+type = "felt252"
+key = true
+
+[[models.members]]
+name = "namespace"
+type = "felt252"
+key = true
+
+[[models.members]]
+name = "id"
+type = "felt252"
+key = true
+
+[[models.members]]
+name = "published"
+type = "bool"
+key = false
+
+[[models.members]]
+name = "whitelisted"
+type = "bool"
+key = false
+
+[[models.members]]
+name = "karma"
+type = "u16"
+key = false
+
+[[models]]
+kind = "DojoModel"
+class_hash = "0x2b1b7a75d91a6394bbdb05bfd056b02bc7097b8a4e07faa368fe173e5614b67"
+original_class_hash = "0x2b1b7a75d91a6394bbdb05bfd056b02bc7097b8a4e07faa368fe173e5614b67"
+abi = "manifests/slot/deployment/abis/models/conquest-AchievementCompletion-1d044dbd.json"
+tag = "conquest-AchievementCompletion"
+qualified_path = "achievement::events::index::achievement_completion"
+manifest_name = "conquest-AchievementCompletion-1d044dbd"
+
+[[models.members]]
+name = "namespace"
+type = "felt252"
+key = true
+
+[[models.members]]
+name = "identifier"
+type = "felt252"
+key = true
+
+[[models.members]]
+name = "player_id"
+type = "felt252"
+key = true
+
+[[models.members]]
+name = "progress"
+type = "u32"
+key = false
+
+[[models.members]]
+name = "time"
+type = "u64"
+key = false
+
+[[models]]
+kind = "DojoModel"
+class_hash = "0x4eb2941be507082e18eda3203f934c461f92d1671b7aa61a06f7cf263b00a62"
+original_class_hash = "0x4eb2941be507082e18eda3203f934c461f92d1671b7aa61a06f7cf263b00a62"
+abi = "manifests/slot/deployment/abis/models/conquest-AchievementCreation-4c815d24.json"
+tag = "conquest-AchievementCreation"
+qualified_path = "achievement::events::index::achievement_creation"
+manifest_name = "conquest-AchievementCreation-4c815d24"
+
+[[models.members]]
+name = "namespace"
+type = "felt252"
+key = true
+
+[[models.members]]
+name = "identifier"
+type = "felt252"
+key = true
+
+[[models.members]]
+name = "hidden"
+type = "bool"
+key = false
+
+[[models.members]]
+name = "points"
+type = "u16"
+key = false
+
+[[models.members]]
+name = "total"
+type = "u32"
+key = false
+
+[[models.members]]
+name = "title"
+type = "ByteArray"
+key = false
+
+[[models.members]]
+name = "hidden_title"
+type = "ByteArray"
+key = false
+
+[[models.members]]
+name = "description"
+type = "ByteArray"
+key = false
+
+[[models.members]]
+name = "hidden_description"
+type = "ByteArray"
+key = false
+
+[[models.members]]
+name = "image_uri"
+type = "ByteArray"
+key = false
+
+[[models.members]]
+name = "icon"
+type = "felt252"
+key = false
+
+[[models.members]]
+name = "time"
+type = "u64"
+key = false
+
+[[models]]
+kind = "DojoModel"
+class_hash = "0x5562fabfd42a68a024d3e6004f47863d3b9bb0855ac8483cc62dc969e80694f"
+original_class_hash = "0x5562fabfd42a68a024d3e6004f47863d3b9bb0855ac8483cc62dc969e80694f"
+abi = "manifests/slot/deployment/abis/models/conquest-Game-be8a9e5f.json"
+tag = "conquest-Game"
+qualified_path = "achievement::models::index::game"
+manifest_name = "conquest-Game-be8a9e5f"
+
+[[models.members]]
+name = "world_address"
+type = "felt252"
+key = true
+
+[[models.members]]
+name = "namespace"
+type = "felt252"
+key = true
+
+[[models.members]]
+name = "published"
+type = "bool"
+key = false
+
+[[models.members]]
+name = "whitelisted"
+type = "bool"
+key = false
+
+[[models.members]]
+name = "total_karma"
+type = "u16"
+key = false
+
+[[models.members]]
+name = "name"
+type = "ByteArray"
+key = false
+
+[[models.members]]
+name = "description"
+type = "ByteArray"
+key = false
+
+[[models.members]]
+name = "torii_url"
+type = "ByteArray"
+key = false
+
+[[models.members]]
+name = "image_uri"
+type = "ByteArray"
+key = false
+
+[[models.members]]
+name = "owner"
+type = "felt252"
+key = false
+
+[[models]]
+kind = "DojoModel"
+class_hash = "0x61dfb2d3cbcbd5c227b5f18739baf61aa8e05050e3745caa9c718e78ee3ff8a"
+original_class_hash = "0x61dfb2d3cbcbd5c227b5f18739baf61aa8e05050e3745caa9c718e78ee3ff8a"
+abi = "manifests/slot/deployment/abis/models/conquest-Player-7f3e44c5.json"
+tag = "conquest-Player"
+qualified_path = "conquest::models::index::player"
+manifest_name = "conquest-Player-7f3e44c5"
+
+[[models.members]]
+name = "id"
+type = "felt252"
+key = true
+
+[[models.members]]
+name = "name"
+type = "felt252"
+key = false
+
+[[models]]
+kind = "DojoModel"
+class_hash = "0x41b0571ceebfa248e7bc539e5c7a1accf7dcdee20e393c8be904b927ffe6dc9"
+original_class_hash = "0x41b0571ceebfa248e7bc539e5c7a1accf7dcdee20e393c8be904b927ffe6dc9"
+abi = "manifests/slot/deployment/abis/models/conquest-Tile-22fbeffd.json"
+tag = "conquest-Tile"
+qualified_path = "conquest::models::index::tile"
+manifest_name = "conquest-Tile-22fbeffd"
+
+[[models.members]]
+name = "id"
+type = "u32"
+key = true
+
+[[models.members]]
+name = "player_id"
+type = "felt252"
+key = false
+
+[[models.members]]
+name = "time"
+type = "u64"
+key = false

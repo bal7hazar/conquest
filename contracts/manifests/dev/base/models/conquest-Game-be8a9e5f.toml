@@ -1,0 +1,57 @@
+kind = "DojoModel"
+class_hash = "0x5562fabfd42a68a024d3e6004f47863d3b9bb0855ac8483cc62dc969e80694f"
+original_class_hash = "0x5562fabfd42a68a024d3e6004f47863d3b9bb0855ac8483cc62dc969e80694f"
+abi = "manifests/dev/base/abis/models/conquest-Game-be8a9e5f.json"
+tag = "conquest-Game"
+qualified_path = "achievement::models::index::game"
+manifest_name = "conquest-Game-be8a9e5f"
+
+[[members]]
+name = "world_address"
+type = "felt252"
+key = true
+
+[[members]]
+name = "namespace"
+type = "felt252"
+key = true
+
+[[members]]
+name = "published"
+type = "bool"
+key = false
+
+[[members]]
+name = "whitelisted"
+type = "bool"
+key = false
+
+[[members]]
+name = "total_karma"
+type = "u16"
+key = false
+
+[[members]]
+name = "name"
+type = "ByteArray"
+key = false
+
+[[members]]
+name = "description"
+type = "ByteArray"
+key = false
+
+[[members]]
+name = "torii_url"
+type = "ByteArray"
+key = false
+
+[[members]]
+name = "image_uri"
+type = "ByteArray"
+key = false
+
+[[members]]
+name = "owner"
+type = "felt252"
+key = false
