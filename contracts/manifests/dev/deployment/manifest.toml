@@ -11,7 +11,7 @@ manifest_name = "dojo-world"
 
 [world.metadata]
 profile_name = "dev"
-rpc_url = "http://localhost:5050/"
+rpc_url = "http://localhost:5051/"
 
 [base]
 kind = "Class"
@@ -24,8 +24,8 @@ manifest_name = "dojo-base"
 [[contracts]]
 kind = "DojoContract"
 address = "0x4fc69557e6ddfa9b89ac558d2a126b47423fa295f4bd34b527c7bb548cbe5a2"
-class_hash = "0x494af93284bba8714cf62cc2b63137dc20358079b0f28725465e752f009cd55"
-original_class_hash = "0x494af93284bba8714cf62cc2b63137dc20358079b0f28725465e752f009cd55"
+class_hash = "0x20ba0b7e0a8d0562bb9225dcbc1dc3340c4673cc0ab9c1d86490c3d3432929b"
+original_class_hash = "0x20ba0b7e0a8d0562bb9225dcbc1dc3340c4673cc0ab9c1d86490c3d3432929b"
 base_class_hash = "0x2427dd10a58850ac9a5ca6ce04b7771b05330fd18f2e481831ad903b969e6b2"
 abi = "manifests/dev/deployment/abis/contracts/conquest-Actions-4c864b1c.json"
 reads = []
@@ -44,8 +44,8 @@ manifest_name = "conquest-Actions-4c864b1c"
 
 [[models]]
 kind = "DojoModel"
-class_hash = "0x104a1256018b01f2f67ce67dc3fa4344f2e263dd14d63f1b54b90332afa522b"
-original_class_hash = "0x104a1256018b01f2f67ce67dc3fa4344f2e263dd14d63f1b54b90332afa522b"
+class_hash = "0x191e3695abef2e8c3db7e4d32f38d6b43eda5de2c7397daf8406f6959b3d807"
+original_class_hash = "0x191e3695abef2e8c3db7e4d32f38d6b43eda5de2c7397daf8406f6959b3d807"
 abi = "manifests/dev/deployment/abis/models/conquest-Achievement-66a4467a.json"
 tag = "conquest-Achievement"
 qualified_path = "achievement::models::index::achievement"
@@ -77,14 +77,14 @@ type = "bool"
 key = false
 
 [[models.members]]
-name = "points"
+name = "karma"
 type = "u16"
 key = false
 
 [[models]]
 kind = "DojoModel"
-class_hash = "0x5e1c5422311c9bfcbef458135c7afa5861e0dd7de0c18f39f58325c8c738ee7"
-original_class_hash = "0x5e1c5422311c9bfcbef458135c7afa5861e0dd7de0c18f39f58325c8c738ee7"
+class_hash = "0x2b1b7a75d91a6394bbdb05bfd056b02bc7097b8a4e07faa368fe173e5614b67"
+original_class_hash = "0x2b1b7a75d91a6394bbdb05bfd056b02bc7097b8a4e07faa368fe173e5614b67"
 abi = "manifests/dev/deployment/abis/models/conquest-AchievementCompletion-1d044dbd.json"
 tag = "conquest-AchievementCompletion"
 qualified_path = "achievement::events::index::achievement_completion"
@@ -106,12 +106,7 @@ type = "felt252"
 key = true
 
 [[models.members]]
-name = "count"
-type = "u32"
-key = false
-
-[[models.members]]
-name = "total"
+name = "progress"
 type = "u32"
 key = false
 
@@ -122,8 +117,8 @@ key = false
 
 [[models]]
 kind = "DojoModel"
-class_hash = "0x7292982df894158fc46678d5732f1c066e9a4d911b33ac9cc9e39410ff6785b"
-original_class_hash = "0x7292982df894158fc46678d5732f1c066e9a4d911b33ac9cc9e39410ff6785b"
+class_hash = "0x4eb2941be507082e18eda3203f934c461f92d1671b7aa61a06f7cf263b00a62"
+original_class_hash = "0x4eb2941be507082e18eda3203f934c461f92d1671b7aa61a06f7cf263b00a62"
 abi = "manifests/dev/deployment/abis/models/conquest-AchievementCreation-4c815d24.json"
 tag = "conquest-AchievementCreation"
 qualified_path = "achievement::events::index::achievement_creation"
@@ -138,6 +133,11 @@ key = true
 name = "identifier"
 type = "felt252"
 key = true
+
+[[models.members]]
+name = "hidden"
+type = "bool"
+key = false
 
 [[models.members]]
 name = "points"
@@ -155,7 +155,17 @@ type = "ByteArray"
 key = false
 
 [[models.members]]
+name = "hidden_title"
+type = "ByteArray"
+key = false
+
+[[models.members]]
 name = "description"
+type = "ByteArray"
+key = false
+
+[[models.members]]
+name = "hidden_description"
 type = "ByteArray"
 key = false
 
@@ -165,14 +175,19 @@ type = "ByteArray"
 key = false
 
 [[models.members]]
+name = "icon"
+type = "felt252"
+key = false
+
+[[models.members]]
 name = "time"
 type = "u64"
 key = false
 
 [[models]]
 kind = "DojoModel"
-class_hash = "0x7a4106a0e4d9a80e98ff772a796b631de9a0c2a28562c1648c6a24fd6b9d5ff"
-original_class_hash = "0x7a4106a0e4d9a80e98ff772a796b631de9a0c2a28562c1648c6a24fd6b9d5ff"
+class_hash = "0x5562fabfd42a68a024d3e6004f47863d3b9bb0855ac8483cc62dc969e80694f"
+original_class_hash = "0x5562fabfd42a68a024d3e6004f47863d3b9bb0855ac8483cc62dc969e80694f"
 abi = "manifests/dev/deployment/abis/models/conquest-Game-be8a9e5f.json"
 tag = "conquest-Game"
 qualified_path = "achievement::models::index::game"
@@ -199,7 +214,7 @@ type = "bool"
 key = false
 
 [[models.members]]
-name = "total_points"
+name = "total_karma"
 type = "u16"
 key = false
 

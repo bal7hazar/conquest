@@ -367,6 +367,20 @@
     "interface_name": "achievement::events::index::Iachievement_creation"
   },
   {
+    "type": "enum",
+    "name": "core::bool",
+    "variants": [
+      {
+        "name": "False",
+        "type": "()"
+      },
+      {
+        "name": "True",
+        "type": "()"
+      }
+    ]
+  },
+  {
     "type": "struct",
     "name": "achievement::events::index::AchievementCreation",
     "members": [
@@ -377,6 +391,10 @@
       {
         "name": "identifier",
         "type": "core::felt252"
+      },
+      {
+        "name": "hidden",
+        "type": "core::bool"
       },
       {
         "name": "points",
@@ -391,12 +409,24 @@
         "type": "core::byte_array::ByteArray"
       },
       {
+        "name": "hidden_title",
+        "type": "core::byte_array::ByteArray"
+      },
+      {
         "name": "description",
+        "type": "core::byte_array::ByteArray"
+      },
+      {
+        "name": "hidden_description",
         "type": "core::byte_array::ByteArray"
       },
       {
         "name": "image_uri",
         "type": "core::byte_array::ByteArray"
+      },
+      {
+        "name": "icon",
+        "type": "core::felt252"
       },
       {
         "name": "time",

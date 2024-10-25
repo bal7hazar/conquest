@@ -56,8 +56,8 @@ mod QuestableComponent {
                         hidden_title: quest.hidden_title(),
                         description: quest.description(),
                         hidden_description: quest.hidden_description(),
-                        image_uri: quest.image_uri(),
-                        icon: quest.icon().into(),
+                        icon: quest.icon(),
+                        icon_style: quest.icon_style(),
                     );
                 quest_id -= 1;
             }
@@ -92,13 +92,13 @@ mod QuestableComponent {
             achievable
                 .update(
                     world,
-                    identifier: quest.identifier(),
                     player_id: player_id,
-                    progress: progress.into(),
+                    identifier: quest.identifier(),
+                    count: progress.into(),
                 );
         }
 
-        fn validate(self: @ComponentState<TContractState>, world: IWorldDispatcher, quest: Quest,) {
+        fn assess(self: @ComponentState<TContractState>, world: IWorldDispatcher, quest: Quest,) {
             // [Setup] Datastore
             let store: Store = StoreTrait::new(world);
 
@@ -110,7 +110,7 @@ mod QuestableComponent {
             // [Event] Emit quest completion event
             let mut achievable = get_dep_component!(self, InternalImpl);
             achievable
-                .update(world, identifier: quest.identifier(), player_id: player_id, progress: 1,);
+                .update(world, player_id: player_id, identifier: quest.identifier(), count: 1,);
         }
     }
 }

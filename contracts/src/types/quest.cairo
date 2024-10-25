@@ -1,6 +1,5 @@
 use conquest::elements::quests;
 use conquest::models::tile::Tile;
-use achievement::types::icon::AchievementIcon;
 
 // Constants
 
@@ -97,22 +96,22 @@ impl QuestImpl of QuestTrait {
     }
 
     #[inline]
-    fn image_uri(self: Quest) -> ByteArray {
+    fn icon(self: Quest) -> felt252 {
         match self {
-            Quest::None => "",
-            Quest::Conqueror => quests::conqueror::Conqueror::image_uri(),
-            Quest::Fanatic => quests::fanatic::Fanatic::image_uri(),
-            Quest::Squire => quests::squire::Squire::image_uri(),
+            Quest::None => 0,
+            Quest::Conqueror => quests::conqueror::Conqueror::icon(),
+            Quest::Fanatic => quests::fanatic::Fanatic::icon(),
+            Quest::Squire => quests::squire::Squire::icon(),
         }
     }
 
     #[inline]
-    fn icon(self: Quest) -> AchievementIcon {
+    fn icon_style(self: Quest) -> felt252 {
         match self {
-            Quest::None => AchievementIcon::None,
-            Quest::Conqueror => quests::conqueror::Conqueror::icon(),
-            Quest::Fanatic => quests::fanatic::Fanatic::icon(),
-            Quest::Squire => quests::squire::Squire::icon(),
+            Quest::None => '',
+            Quest::Conqueror => quests::conqueror::Conqueror::icon_style(),
+            Quest::Fanatic => quests::fanatic::Fanatic::icon_style(),
+            Quest::Squire => quests::squire::Squire::icon_style(),
         }
     }
 

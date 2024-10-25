@@ -1,15 +1,10 @@
 kind = "DojoModel"
-class_hash = "0x4eb2941be507082e18eda3203f934c461f92d1671b7aa61a06f7cf263b00a62"
-original_class_hash = "0x4eb2941be507082e18eda3203f934c461f92d1671b7aa61a06f7cf263b00a62"
+class_hash = "0x1b2c624cd0563bba178aa0bf4c74b3627e5c1c3705ecca9130ee8f5fd222b19"
+original_class_hash = "0x1b2c624cd0563bba178aa0bf4c74b3627e5c1c3705ecca9130ee8f5fd222b19"
 abi = "manifests/slot/base/abis/models/conquest-AchievementCreation-4c815d24.json"
 tag = "conquest-AchievementCreation"
 qualified_path = "achievement::events::index::achievement_creation"
 manifest_name = "conquest-AchievementCreation-4c815d24"
-
-[[members]]
-name = "namespace"
-type = "felt252"
-key = true
 
 [[members]]
 name = "identifier"
@@ -52,12 +47,12 @@ type = "ByteArray"
 key = false
 
 [[members]]
-name = "image_uri"
-type = "ByteArray"
+name = "icon"
+type = "felt252"
 key = false
 
 [[members]]
-name = "icon"
+name = "icon_style"
 type = "felt252"
 key = false
 

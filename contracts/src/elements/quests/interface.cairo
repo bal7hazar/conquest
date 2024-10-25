@@ -1,5 +1,4 @@
 use conquest::models::tile::Tile;
-use achievement::types::icon::AchievementIcon;
 
 trait QuestTrait {
     fn identifier() -> felt252;
@@ -10,7 +9,7 @@ trait QuestTrait {
     fn hidden_title() -> ByteArray;
     fn description() -> ByteArray;
     fn hidden_description() -> ByteArray;
-    fn image_uri() -> ByteArray;
-    fn icon() -> AchievementIcon;
+    fn icon() -> felt252;
+    fn icon_style() -> felt252;
     fn completion(ref tiles: Array<Tile>, player_id: felt252) -> (u16, u16);
 }

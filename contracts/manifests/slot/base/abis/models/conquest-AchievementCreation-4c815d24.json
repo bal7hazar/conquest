@@ -385,10 +385,6 @@
     "name": "achievement::events::index::AchievementCreation",
     "members": [
       {
-        "name": "namespace",
-        "type": "core::felt252"
-      },
-      {
         "name": "identifier",
         "type": "core::felt252"
       },
@@ -421,11 +417,11 @@
         "type": "core::byte_array::ByteArray"
       },
       {
-        "name": "image_uri",
-        "type": "core::byte_array::ByteArray"
+        "name": "icon",
+        "type": "core::felt252"
       },
       {
-        "name": "icon",
+        "name": "icon_style",
         "type": "core::felt252"
       },
       {

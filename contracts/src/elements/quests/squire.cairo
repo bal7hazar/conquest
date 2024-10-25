@@ -1,4 +1,4 @@
-use conquest::elements::quests::interface::{QuestTrait, Tile, AchievementIcon};
+use conquest::elements::quests::interface::{QuestTrait, Tile};
 use conquest::helpers::dater::Dater;
 
 impl Squire of QuestTrait {
@@ -43,13 +43,13 @@ impl Squire of QuestTrait {
     }
 
     #[inline]
-    fn image_uri() -> ByteArray {
-        "https://storage.googleapis.com/pod_public/1300/177060.jpg"
+    fn icon() -> felt252 {
+        'fa-dice'
     }
 
     #[inline]
-    fn icon() -> AchievementIcon {
-        AchievementIcon::Dice
+    fn icon_style() -> felt252 {
+        'fa-light'
     }
 
     #[inline]

@@ -401,7 +401,7 @@
         "type": "core::bool"
       },
       {
-        "name": "total_points",
+        "name": "total_karma",
         "type": "core::integer::u16"
       },
       {

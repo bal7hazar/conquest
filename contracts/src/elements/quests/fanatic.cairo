@@ -1,4 +1,4 @@
-use conquest::elements::quests::interface::{QuestTrait, Tile, AchievementIcon};
+use conquest::elements::quests::interface::{QuestTrait, Tile};
 use conquest::helpers::dater::Dater;
 
 const CONSECUTIVE_MINUTES_REQUIRED: u16 = 3;
@@ -45,13 +45,13 @@ impl Fanatic of QuestTrait {
     }
 
     #[inline]
-    fn image_uri() -> ByteArray {
-        "https://storage.googleapis.com/pod_public/1300/200887.jpg"
+    fn icon() -> felt252 {
+        'fa-bolt'
     }
 
     #[inline]
-    fn icon() -> AchievementIcon {
-        AchievementIcon::Bolt
+    fn icon_style() -> felt252 {
+        'fa-regular'
     }
 
     #[inline]

@@ -1,4 +1,4 @@
-use conquest::elements::quests::interface::{QuestTrait, Tile, AchievementIcon};
+use conquest::elements::quests::interface::{QuestTrait, Tile};
 
 const CONQUESTS_REQUIRED: u16 = 3;
 
@@ -44,13 +44,13 @@ impl Conqueror of QuestTrait {
     }
 
     #[inline]
-    fn image_uri() -> ByteArray {
-        "https://storage.googleapis.com/pod_public/1300/177057.jpg"
+    fn icon() -> felt252 {
+        'fa-khanda'
     }
 
     #[inline]
-    fn icon() -> AchievementIcon {
-        AchievementIcon::Khanda
+    fn icon_style() -> felt252 {
+        'fa-solid'
     }
 
     #[inline]

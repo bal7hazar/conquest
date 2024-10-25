@@ -371,7 +371,7 @@
     "name": "achievement::events::index::AchievementCompletion",
     "members": [
       {
-        "name": "namespace",
+        "name": "player_id",
         "type": "core::felt252"
       },
       {
@@ -379,11 +379,7 @@
         "type": "core::felt252"
       },
       {
-        "name": "player_id",
-        "type": "core::felt252"
-      },
-      {
-        "name": "progress",
+        "name": "count",
         "type": "core::integer::u32"
       },
       {

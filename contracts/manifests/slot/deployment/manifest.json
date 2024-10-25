@@ -1256,8 +1256,8 @@
     {
       "kind": "DojoContract",
       "address": "0x4fc69557e6ddfa9b89ac558d2a126b47423fa295f4bd34b527c7bb548cbe5a2",
-      "class_hash": "0x20ba0b7e0a8d0562bb9225dcbc1dc3340c4673cc0ab9c1d86490c3d3432929b",
-      "original_class_hash": "0x20ba0b7e0a8d0562bb9225dcbc1dc3340c4673cc0ab9c1d86490c3d3432929b",
+      "class_hash": "0x2454c49d930170e1c07505dd43a8ea70edb7d7d775aa7988483981a6c17c86a",
+      "original_class_hash": "0x2454c49d930170e1c07505dd43a8ea70edb7d7d775aa7988483981a6c17c86a",
       "base_class_hash": "0x2427dd10a58850ac9a5ca6ce04b7771b05330fd18f2e481831ad903b969e6b2",
       "abi": [
         {
@@ -2052,7 +2052,7 @@
       "kind": "DojoModel",
       "members": [
         {
-          "name": "namespace",
+          "name": "player_id",
           "type": "felt252",
           "key": true
         },
@@ -2062,12 +2062,7 @@
           "key": true
         },
         {
-          "name": "player_id",
-          "type": "felt252",
-          "key": true
-        },
-        {
-          "name": "progress",
+          "name": "count",
           "type": "u32",
           "key": false
         },
@@ -2077,8 +2072,8 @@
           "key": false
         }
       ],
-      "class_hash": "0x2b1b7a75d91a6394bbdb05bfd056b02bc7097b8a4e07faa368fe173e5614b67",
-      "original_class_hash": "0x2b1b7a75d91a6394bbdb05bfd056b02bc7097b8a4e07faa368fe173e5614b67",
+      "class_hash": "0x1bfc433e762613b252857889fe325939e4e8ee8ce451692de2c57a7b788edbd",
+      "original_class_hash": "0x1bfc433e762613b252857889fe325939e4e8ee8ce451692de2c57a7b788edbd",
       "abi": [
         {
           "type": "impl",
@@ -2452,7 +2447,7 @@
           "name": "achievement::events::index::AchievementCompletion",
           "members": [
             {
-              "name": "namespace",
+              "name": "player_id",
               "type": "core::felt252"
             },
             {
@@ -2460,11 +2455,7 @@
               "type": "core::felt252"
             },
             {
-              "name": "player_id",
-              "type": "core::felt252"
-            },
-            {
-              "name": "progress",
+              "name": "count",
               "type": "core::integer::u32"
             },
             {
@@ -2506,11 +2497,6 @@
       "kind": "DojoModel",
       "members": [
         {
-          "name": "namespace",
-          "type": "felt252",
-          "key": true
-        },
-        {
           "name": "identifier",
           "type": "felt252",
           "key": true
@@ -2551,12 +2537,12 @@
           "key": false
         },
         {
-          "name": "image_uri",
-          "type": "ByteArray",
+          "name": "icon",
+          "type": "felt252",
           "key": false
         },
         {
-          "name": "icon",
+          "name": "icon_style",
           "type": "felt252",
           "key": false
         },
@@ -2566,8 +2552,8 @@
           "key": false
         }
       ],
-      "class_hash": "0x4eb2941be507082e18eda3203f934c461f92d1671b7aa61a06f7cf263b00a62",
-      "original_class_hash": "0x4eb2941be507082e18eda3203f934c461f92d1671b7aa61a06f7cf263b00a62",
+      "class_hash": "0x1b2c624cd0563bba178aa0bf4c74b3627e5c1c3705ecca9130ee8f5fd222b19",
+      "original_class_hash": "0x1b2c624cd0563bba178aa0bf4c74b3627e5c1c3705ecca9130ee8f5fd222b19",
       "abi": [
         {
           "type": "impl",
@@ -2955,10 +2941,6 @@
           "name": "achievement::events::index::AchievementCreation",
           "members": [
             {
-              "name": "namespace",
-              "type": "core::felt252"
-            },
-            {
               "name": "identifier",
               "type": "core::felt252"
             },
@@ -2991,11 +2973,11 @@
               "type": "core::byte_array::ByteArray"
             },
             {
-              "name": "image_uri",
-              "type": "core::byte_array::ByteArray"
+              "name": "icon",
+              "type": "core::felt252"
             },
             {
-              "name": "icon",
+              "name": "icon_style",
               "type": "core::felt252"
             },
             {

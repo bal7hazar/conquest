@@ -75,11 +75,12 @@ mod Actions {
     impl ActionsImpl of IActions<ContractState> {
         fn signup(self: @ContractState, name: felt252) {
             self.signable.signup(self.world(), name);
-            self.questable.validate(self.world(), Quest::Squire)
+            self.questable.assess(self.world(), Quest::Squire)
         }
 
         fn conquest(self: @ContractState) {
-            self.playable.conquest(self.world())
+            self.playable.conquest(self.world());
+            self.questable.assess(self.world(), Quest::Conqueror);
         }
 
         fn verify(self: @ContractState, quest: u8, mut tile_ids: Array<u32>) {
