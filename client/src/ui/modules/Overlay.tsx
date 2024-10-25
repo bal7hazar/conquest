@@ -1,6 +1,7 @@
 import { useDojo } from "@/dojo/useDojo";
 import { usePlayer } from "@/hooks/usePlayer";
 import { Conquest } from "../actions/Conquest";
+import { Verify } from "../actions/Verify";
 import { Signup } from "../actions/Signup";
 import { useTiles } from "@/hooks/useTiles";
 import { Tile } from "@/dojo/models/tile";
@@ -17,19 +18,29 @@ import { Progress } from "../elements/ui/progress";
 import { AchievementCompletion, AchievementCreation } from "@/dojo/bindings/models.gen";
 import Quest from "@/dojo/types/quest";
 import { Connection } from "../components/Connection";
+import { shortString } from "starknet";
+
+const QUESTS: string[] = [
+  "Squire",
+  "Explorer",
+  "Battlelord",
+  "Conqueror",
+  "Breeder",
+  "Strategist",
+  "Opportunist",
+  "Ruler",
+  "Maximalist",
+  "Warlord",
+]
 
 export const Overlay = () => {
   const {
     account: { account },
   } = useDojo();
 
-  console.log('account', account);
-
   const { player } = usePlayer({ playerId: account?.address });
   const { tiles } = useTiles({ playerId: account?.address });
   const { creations, completions } = useEvents({ playerId: account?.address });
-
-  console.log('completions', completions);
 
   return (
     <div className={`absolute top-12 left-1/2 -translate-x-1/2 w-full`}>
@@ -62,7 +73,12 @@ export const GameScene = ({ tiles, creations, completions, playerId }: { tiles: 
   return (
     <div className="flex flex-col gap-8 items-center absolute w-36 left-1/2 -translate-x-1/2 top-48">
       <h1 className="text-4xl text-center">Click to Conquer</h1>
-      <Conquest ownedTileIds={Quest.getOwnedTiles(tiles)} consecutiveTileIds={Quest.getConsecutiveTiles(tiles)} />
+      <div className="flex gap-1">
+        <Conquest ownedTileIds={Quest.getOwnedTiles(tiles)} consecutiveTileIds={Quest.getConsecutiveTiles(tiles)} />
+        {Array.from({ length: QUESTS.length }).map((_, index) => (
+          <Verify key={index} quest={index + 1} label={QUESTS[index]} />
+        ))}
+      </div>
       <div>
         <p>{`Tiles: ${tiles.length}`}</p>
       </div>
@@ -86,20 +102,23 @@ export const Achievements = ({ creations, completions, playerId }: { creations: 
 }
 
 export const Achievement = ({ creation, completions, playerId }: { creation: AchievementCreation, completions: AchievementCompletion[], playerId: string }) => {
-  const filteredCompletions = completions.filter((completion) => completion.identifier === creation.identifier && completion.player_id === BigInt(playerId));
-  const completion = filteredCompletions.reduce((max, completion) => completion.progress > max.progress ? completion : max, filteredCompletions[0]);
-  const progress = completion ? Number(completion.progress) : 0;
+  const filteredCompletions = completions.filter((completion) => completion.quest === creation.quest && completion.player_id === BigInt(playerId));
+  const completion = filteredCompletions.reduce((max, completion) => completion.count > max.count ? completion : max, filteredCompletions[0]);
+  const count = completion ? Number(completion.count) : 0;
   return (
-    <Card className={`w-[150px] ${progress === 100 ? 'border-green-500' : 'border-orange-500'}`}>
+    <Card className={`w-[150px] ${count === 100 ? 'border-green-500' : 'border-orange-500'}`}>
       <div className="flex flex-col justify-between h-full">
         <CardHeader>
           <CardTitle>{`${creation.title}`}</CardTitle>
           <CardDescription>{`${creation.description}`}</CardDescription>
         </CardHeader>
         <CardContent className="flex flex-col items-center">
-          <img className="w-16 h-16 rounded-full object-cover" src={`${creation.image_uri}`} alt={`${creation.title}`} />
-          <p>{`${progress}%`}</p>
-          <Progress value={progress} />
+          {/* <FontAwesomeIcon className="w-16 h-16" icon={faTrophy} /> */}
+          {/* <FontAwesomeIcon className="w-16 h-16" icon={{ prefix: "fas" as IconPrefix, iconName: 'trophy' as IconName }} /> */}
+          {/* <div className={`w-16 h-16 fa-solid fa-thumbs-up`} /> */}
+          <div className={`w-16 h-16 fa-spider-web fa-thin`} />
+          <p>{`${count}%`}</p>
+          <Progress value={count} />
         </CardContent>
       </div>
     </Card>

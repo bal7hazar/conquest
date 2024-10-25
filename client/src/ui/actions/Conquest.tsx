@@ -7,16 +7,14 @@ export const Conquest = ({ ownedTileIds, consecutiveTileIds }: { ownedTileIds: n
     account: { account },
     master,
     setup: {
-      systemCalls: { conquest_verify },
+      systemCalls: { conquest },
     },
   } = useDojo();
 
   const handleClick = useCallback(async () => {
     try {
-      await conquest_verify({
+      await conquest({
         account,
-        owned_tile_ids: ownedTileIds,
-        consecutive_tile_ids: consecutiveTileIds,
       });
     } catch (error) {
       console.error(error);

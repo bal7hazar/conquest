@@ -20,7 +20,6 @@ export interface Conquest {
 export interface Verify {
     account: Account;
     quest: number;
-    tile_ids: number[];
 }
 
 export interface ConquestVerify {
@@ -55,8 +54,28 @@ export async function setupWorld(provider: DojoProvider) {
             
 
     
+        // Call the `name` system with the specified Account and calldata
+        const name = async (props: { account: Account }) => {
+            try {
+                return await provider.execute(
+                    props.account,
+                    {
+                        contractName: contract_name,
+                        entrypoint: "name",
+                        calldata: [],
+                    },
+                    "conquest"
+                );
+            } catch (error) {
+                console.error("Error executing name:", error);
+                throw error;
+            }
+        };
+            
+
+    
         // Call the `signup` system with the specified Account and calldata
-        const signup = async (props: Signup) => {
+        const signup = async (props: { account: Account, name: string }) => {
             try {
                 return await provider.execute(
                     props.account,
@@ -76,7 +95,7 @@ export async function setupWorld(provider: DojoProvider) {
 
     
         // Call the `conquest` system with the specified Account and calldata
-        const conquest = async (props: Conquest) => {
+        const conquest = async (props: { account: Account }) => {
             try {
                 return await provider.execute(
                     props.account,
@@ -96,16 +115,14 @@ export async function setupWorld(provider: DojoProvider) {
 
     
         // Call the `verify` system with the specified Account and calldata
-        const verify = async (props: Verify) => {
+        const verify = async (props: { account: Account, quest: number }) => {
             try {
                 return await provider.execute(
                     props.account,
                     {
                         contractName: contract_name,
                         entrypoint: "verify",
-                        calldata: [props.quest,
-                            props.tile_ids.length,
-                ...props.tile_ids],
+                        calldata: [props.quest],
                     },
                     "conquest"
                 );
@@ -114,38 +131,10 @@ export async function setupWorld(provider: DojoProvider) {
                 throw error;
             }
         };
-
-        const conquest_verify = async (props: ConquestVerify) => {
-            try {
-                return await provider.execute(
-                    props.account,
-                    [
-                        {
-                            contractName: contract_name,
-                            entrypoint: "conquest",
-                            calldata: [],
-                        },
-                        {
-                            contractName: contract_name,
-                            entrypoint: "verify",
-                            calldata: [
-                                2,
-                                props.consecutive_tile_ids.length,
-                                ...props.consecutive_tile_ids
-                            ],
-                        },
-                    ],
-                    "conquest"
-                );
-            } catch (error) {
-                console.error("Error executing conquest and verify:", error);
-                throw error;
-            }
-        }
             
 
         return {
-            world, signup, conquest, verify, conquest_verify
+            world, name, signup, conquest, verify
         };
     }
 

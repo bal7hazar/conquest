@@ -3,14 +3,21 @@ use conquest::models::tile::Tile;
 
 // Constants
 
-pub const QUEST_COUNT: u8 = 3;
+pub const QUEST_COUNT: u8 = 10;
 
 #[derive(Copy, Drop)]
 enum Quest {
     None,
-    Conqueror,
-    Fanatic,
     Squire,
+    Explorer,
+    Battlelord,
+    Conqueror,
+    Breeder,
+    Strategist,
+    Opportunist,
+    Ruler,
+    Maximalist,
+    Warlord,
 }
 
 #[generate_trait]
@@ -19,99 +26,16 @@ impl QuestImpl of QuestTrait {
     fn identifier(self: Quest) -> felt252 {
         match self {
             Quest::None => 0,
-            Quest::Conqueror => quests::conqueror::Conqueror::identifier(),
-            Quest::Fanatic => quests::fanatic::Fanatic::identifier(),
             Quest::Squire => quests::squire::Squire::identifier(),
-        }
-    }
-
-    #[inline]
-    fn hidden(self: Quest) -> bool {
-        match self {
-            Quest::None => true,
-            Quest::Conqueror => quests::conqueror::Conqueror::hidden(),
-            Quest::Fanatic => quests::fanatic::Fanatic::hidden(),
-            Quest::Squire => quests::squire::Squire::hidden(),
-        }
-    }
-
-    #[inline]
-    fn points(self: Quest) -> u16 {
-        match self {
-            Quest::None => 0,
-            Quest::Conqueror => quests::conqueror::Conqueror::points(),
-            Quest::Fanatic => quests::fanatic::Fanatic::points(),
-            Quest::Squire => quests::squire::Squire::points(),
-        }
-    }
-
-    #[inline]
-    fn total(self: Quest) -> u32 {
-        match self {
-            Quest::None => 0,
-            Quest::Conqueror => quests::conqueror::Conqueror::total(),
-            Quest::Fanatic => quests::fanatic::Fanatic::total(),
-            Quest::Squire => quests::squire::Squire::total(),
-        }
-    }
-
-    #[inline]
-    fn title(self: Quest) -> ByteArray {
-        match self {
-            Quest::None => "",
-            Quest::Conqueror => quests::conqueror::Conqueror::title(),
-            Quest::Fanatic => quests::fanatic::Fanatic::title(),
-            Quest::Squire => quests::squire::Squire::title(),
-        }
-    }
-
-    #[inline]
-    fn hidden_title(self: Quest) -> ByteArray {
-        match self {
-            Quest::None => "",
-            Quest::Conqueror => quests::conqueror::Conqueror::hidden_title(),
-            Quest::Fanatic => quests::fanatic::Fanatic::hidden_title(),
-            Quest::Squire => quests::squire::Squire::hidden_title(),
-        }
-    }
-
-    #[inline]
-    fn description(self: Quest) -> ByteArray {
-        match self {
-            Quest::None => "",
-            Quest::Conqueror => quests::conqueror::Conqueror::description(),
-            Quest::Fanatic => quests::fanatic::Fanatic::description(),
-            Quest::Squire => quests::squire::Squire::description(),
-        }
-    }
-
-    #[inline]
-    fn hidden_description(self: Quest) -> ByteArray {
-        match self {
-            Quest::None => "",
-            Quest::Conqueror => quests::conqueror::Conqueror::hidden_description(),
-            Quest::Fanatic => quests::fanatic::Fanatic::hidden_description(),
-            Quest::Squire => quests::squire::Squire::hidden_description(),
-        }
-    }
-
-    #[inline]
-    fn icon(self: Quest) -> felt252 {
-        match self {
-            Quest::None => 0,
-            Quest::Conqueror => quests::conqueror::Conqueror::icon(),
-            Quest::Fanatic => quests::fanatic::Fanatic::icon(),
-            Quest::Squire => quests::squire::Squire::icon(),
-        }
-    }
-
-    #[inline]
-    fn icon_style(self: Quest) -> felt252 {
-        match self {
-            Quest::None => '',
-            Quest::Conqueror => quests::conqueror::Conqueror::icon_style(),
-            Quest::Fanatic => quests::fanatic::Fanatic::icon_style(),
-            Quest::Squire => quests::squire::Squire::icon_style(),
+            Quest::Explorer => quests::explorer::Explorer::identifier(),
+            Quest::Battlelord => quests::battlelord::Battlelord::identifier(),
+            Quest::Conqueror => quests::conqueror::Conqueror::identifier(),
+            Quest::Breeder => quests::breeder::Breeder::identifier(),
+            Quest::Strategist => quests::strategist::Strategist::identifier(),
+            Quest::Opportunist => quests::opportunist::Opportunist::identifier(),
+            Quest::Ruler => quests::ruler::Ruler::identifier(),
+            Quest::Maximalist => quests::maximalist::Maximalist::identifier(),
+            Quest::Warlord => quests::warlord::Warlord::identifier(),
         }
     }
 
@@ -119,21 +43,18 @@ impl QuestImpl of QuestTrait {
     fn completion(self: Quest, ref tiles: Array<Tile>, player_id: felt252) -> (u16, u16) {
         match self {
             Quest::None => (0, 100),
-            Quest::Conqueror => quests::conqueror::Conqueror::completion(ref tiles, player_id),
-            Quest::Fanatic => quests::fanatic::Fanatic::completion(ref tiles, player_id),
             Quest::Squire => quests::squire::Squire::completion(ref tiles, player_id),
-        }
-    }
-}
-
-impl IntoQuestFelt252 of core::Into<Quest, felt252> {
-    #[inline]
-    fn into(self: Quest) -> felt252 {
-        match self {
-            Quest::None => 'NONE',
-            Quest::Conqueror => 'CONQUEROR',
-            Quest::Fanatic => 'FANATIC',
-            Quest::Squire => 'SQUIRE',
+            Quest::Explorer => quests::explorer::Explorer::completion(ref tiles, player_id),
+            Quest::Battlelord => quests::battlelord::Battlelord::completion(ref tiles, player_id),
+            Quest::Conqueror => quests::conqueror::Conqueror::completion(ref tiles, player_id),
+            Quest::Breeder => quests::breeder::Breeder::completion(ref tiles, player_id),
+            Quest::Strategist => quests::strategist::Strategist::completion(ref tiles, player_id),
+            Quest::Opportunist => quests::opportunist::Opportunist::completion(
+                ref tiles, player_id
+            ),
+            Quest::Ruler => quests::ruler::Ruler::completion(ref tiles, player_id),
+            Quest::Maximalist => quests::maximalist::Maximalist::completion(ref tiles, player_id),
+            Quest::Warlord => quests::warlord::Warlord::completion(ref tiles, player_id),
         }
     }
 }
@@ -143,9 +64,16 @@ impl IntoQuestU8 of core::Into<Quest, u8> {
     fn into(self: Quest) -> u8 {
         match self {
             Quest::None => 0,
-            Quest::Conqueror => 1,
-            Quest::Fanatic => 2,
-            Quest::Squire => 3,
+            Quest::Squire => 1,
+            Quest::Explorer => 2,
+            Quest::Battlelord => 3,
+            Quest::Conqueror => 4,
+            Quest::Breeder => 5,
+            Quest::Strategist => 6,
+            Quest::Opportunist => 7,
+            Quest::Ruler => 8,
+            Quest::Maximalist => 9,
+            Quest::Warlord => 10,
         }
     }
 }
@@ -156,9 +84,16 @@ impl IntoU8Quest of core::Into<u8, Quest> {
         let card: felt252 = self.into();
         match card {
             0 => Quest::None,
-            1 => Quest::Conqueror,
-            2 => Quest::Fanatic,
-            3 => Quest::Squire,
+            1 => Quest::Squire,
+            2 => Quest::Explorer,
+            3 => Quest::Battlelord,
+            4 => Quest::Conqueror,
+            5 => Quest::Breeder,
+            6 => Quest::Strategist,
+            7 => Quest::Opportunist,
+            8 => Quest::Ruler,
+            9 => Quest::Maximalist,
+            10 => Quest::Warlord,
             _ => Quest::None,
         }
     }
@@ -167,8 +102,7 @@ impl IntoU8Quest of core::Into<u8, Quest> {
 impl QuestPrint of core::debug::PrintTrait<Quest> {
     #[inline]
     fn print(self: Quest) {
-        let felt: felt252 = self.into();
-        felt.print();
+        self.identifier().print();
     }
 }
 

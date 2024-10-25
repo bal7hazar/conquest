@@ -1,5 +1,5 @@
 import { Connector } from "@starknet-react/core";
-import { ControllerConnector } from "@cartridge/connector";
+import ControllerConnector from "@cartridge/connector";
 import { getContractByName } from "@dojoengine/core";
 import { dojoConfig } from "../../dojo.config";
 

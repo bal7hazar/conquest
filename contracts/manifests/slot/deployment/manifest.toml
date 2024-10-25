@@ -24,8 +24,8 @@ manifest_name = "dojo-base"
 [[contracts]]
 kind = "DojoContract"
 address = "0x4fc69557e6ddfa9b89ac558d2a126b47423fa295f4bd34b527c7bb548cbe5a2"
-class_hash = "0x2454c49d930170e1c07505dd43a8ea70edb7d7d775aa7988483981a6c17c86a"
-original_class_hash = "0x2454c49d930170e1c07505dd43a8ea70edb7d7d775aa7988483981a6c17c86a"
+class_hash = "0x300cfce6072b9de4c8c654f754848cab200b4a5fa0bc694ec0777736f871e61"
+original_class_hash = "0x300cfce6072b9de4c8c654f754848cab200b4a5fa0bc694ec0777736f871e61"
 base_class_hash = "0x2427dd10a58850ac9a5ca6ce04b7771b05330fd18f2e481831ad903b969e6b2"
 abi = "manifests/slot/deployment/abis/contracts/conquest-Actions-4c864b1c.json"
 reads = []
@@ -83,8 +83,8 @@ key = false
 
 [[models]]
 kind = "DojoModel"
-class_hash = "0x1bfc433e762613b252857889fe325939e4e8ee8ce451692de2c57a7b788edbd"
-original_class_hash = "0x1bfc433e762613b252857889fe325939e4e8ee8ce451692de2c57a7b788edbd"
+class_hash = "0x3a05992c8ef0381fd01d57c796d2408b660d7b08c62a0cb2e66210a5fee9c19"
+original_class_hash = "0x3a05992c8ef0381fd01d57c796d2408b660d7b08c62a0cb2e66210a5fee9c19"
 abi = "manifests/slot/deployment/abis/models/conquest-AchievementCompletion-1d044dbd.json"
 tag = "conquest-AchievementCompletion"
 qualified_path = "achievement::events::index::achievement_completion"
@@ -96,7 +96,7 @@ type = "felt252"
 key = true
 
 [[models.members]]
-name = "identifier"
+name = "quest"
 type = "felt252"
 key = true
 
@@ -112,8 +112,8 @@ key = false
 
 [[models]]
 kind = "DojoModel"
-class_hash = "0x1b2c624cd0563bba178aa0bf4c74b3627e5c1c3705ecca9130ee8f5fd222b19"
-original_class_hash = "0x1b2c624cd0563bba178aa0bf4c74b3627e5c1c3705ecca9130ee8f5fd222b19"
+class_hash = "0x12af05b982971ae1961eb175b5cd82d0f1dc416eddc3508066ad4671045cfd6"
+original_class_hash = "0x12af05b982971ae1961eb175b5cd82d0f1dc416eddc3508066ad4671045cfd6"
 abi = "manifests/slot/deployment/abis/models/conquest-AchievementCreation-4c815d24.json"
 tag = "conquest-AchievementCreation"
 qualified_path = "achievement::events::index::achievement_creation"
@@ -123,6 +123,11 @@ manifest_name = "conquest-AchievementCreation-4c815d24"
 name = "identifier"
 type = "felt252"
 key = true
+
+[[models.members]]
+name = "quest"
+type = "felt252"
+key = false
 
 [[models.members]]
 name = "hidden"
@@ -141,12 +146,7 @@ key = false
 
 [[models.members]]
 name = "title"
-type = "ByteArray"
-key = false
-
-[[models.members]]
-name = "hidden_title"
-type = "ByteArray"
+type = "felt252"
 key = false
 
 [[models.members]]
@@ -155,17 +155,7 @@ type = "ByteArray"
 key = false
 
 [[models.members]]
-name = "hidden_description"
-type = "ByteArray"
-key = false
-
-[[models.members]]
 name = "icon"
-type = "felt252"
-key = false
-
-[[models.members]]
-name = "icon_style"
 type = "felt252"
 key = false
 

@@ -1256,8 +1256,8 @@
     {
       "kind": "DojoContract",
       "address": "0x4fc69557e6ddfa9b89ac558d2a126b47423fa295f4bd34b527c7bb548cbe5a2",
-      "class_hash": "0x2454c49d930170e1c07505dd43a8ea70edb7d7d775aa7988483981a6c17c86a",
-      "original_class_hash": "0x2454c49d930170e1c07505dd43a8ea70edb7d7d775aa7988483981a6c17c86a",
+      "class_hash": "0x300cfce6072b9de4c8c654f754848cab200b4a5fa0bc694ec0777736f871e61",
+      "original_class_hash": "0x300cfce6072b9de4c8c654f754848cab200b4a5fa0bc694ec0777736f871e61",
       "base_class_hash": "0x2427dd10a58850ac9a5ca6ce04b7771b05330fd18f2e481831ad903b969e6b2",
       "abi": [
         {
@@ -1440,10 +1440,6 @@
                 {
                   "name": "quest",
                   "type": "core::integer::u8"
-                },
-                {
-                  "name": "tile_ids",
-                  "type": "core::array::Array::<core::integer::u32>"
                 }
               ],
               "outputs": [],
@@ -2057,7 +2053,7 @@
           "key": true
         },
         {
-          "name": "identifier",
+          "name": "quest",
           "type": "felt252",
           "key": true
         },
@@ -2072,8 +2068,8 @@
           "key": false
         }
       ],
-      "class_hash": "0x1bfc433e762613b252857889fe325939e4e8ee8ce451692de2c57a7b788edbd",
-      "original_class_hash": "0x1bfc433e762613b252857889fe325939e4e8ee8ce451692de2c57a7b788edbd",
+      "class_hash": "0x3a05992c8ef0381fd01d57c796d2408b660d7b08c62a0cb2e66210a5fee9c19",
+      "original_class_hash": "0x3a05992c8ef0381fd01d57c796d2408b660d7b08c62a0cb2e66210a5fee9c19",
       "abi": [
         {
           "type": "impl",
@@ -2451,7 +2447,7 @@
               "type": "core::felt252"
             },
             {
-              "name": "identifier",
+              "name": "quest",
               "type": "core::felt252"
             },
             {
@@ -2502,6 +2498,11 @@
           "key": true
         },
         {
+          "name": "quest",
+          "type": "felt252",
+          "key": false
+        },
+        {
           "name": "hidden",
           "type": "bool",
           "key": false
@@ -2518,21 +2519,11 @@
         },
         {
           "name": "title",
-          "type": "ByteArray",
-          "key": false
-        },
-        {
-          "name": "hidden_title",
-          "type": "ByteArray",
+          "type": "felt252",
           "key": false
         },
         {
           "name": "description",
-          "type": "ByteArray",
-          "key": false
-        },
-        {
-          "name": "hidden_description",
           "type": "ByteArray",
           "key": false
         },
@@ -2542,18 +2533,13 @@
           "key": false
         },
         {
-          "name": "icon_style",
-          "type": "felt252",
-          "key": false
-        },
-        {
           "name": "time",
           "type": "u64",
           "key": false
         }
       ],
-      "class_hash": "0x1b2c624cd0563bba178aa0bf4c74b3627e5c1c3705ecca9130ee8f5fd222b19",
-      "original_class_hash": "0x1b2c624cd0563bba178aa0bf4c74b3627e5c1c3705ecca9130ee8f5fd222b19",
+      "class_hash": "0x12af05b982971ae1961eb175b5cd82d0f1dc416eddc3508066ad4671045cfd6",
+      "original_class_hash": "0x12af05b982971ae1961eb175b5cd82d0f1dc416eddc3508066ad4671045cfd6",
       "abi": [
         {
           "type": "impl",
@@ -2945,6 +2931,10 @@
               "type": "core::felt252"
             },
             {
+              "name": "quest",
+              "type": "core::felt252"
+            },
+            {
               "name": "hidden",
               "type": "core::bool"
             },
@@ -2958,26 +2948,14 @@
             },
             {
               "name": "title",
-              "type": "core::byte_array::ByteArray"
-            },
-            {
-              "name": "hidden_title",
-              "type": "core::byte_array::ByteArray"
+              "type": "core::felt252"
             },
             {
               "name": "description",
               "type": "core::byte_array::ByteArray"
             },
             {
-              "name": "hidden_description",
-              "type": "core::byte_array::ByteArray"
-            },
-            {
               "name": "icon",
-              "type": "core::felt252"
-            },
-            {
-              "name": "icon_style",
               "type": "core::felt252"
             },
             {

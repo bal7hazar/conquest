@@ -108,18 +108,9 @@ export function systems({
     );
   };
 
-  const conquest_verify = async ({ account, ...props }: SystemTypes.ConquestVerify) => {
-    await handleTransaction(
-      account,
-      () => client.Actions.conquest_verify({ account, ...props }),
-      "Player has conquered and verified a quest.",
-    );
-  };
-
   return {
     signup,
     conquest,
     verify,
-    conquest_verify,
   };
 }

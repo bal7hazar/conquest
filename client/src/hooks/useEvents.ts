@@ -20,7 +20,6 @@ export const useEvents = ({ playerId }: { playerId: string | undefined }): { cre
   }, []);
 
   const handleAchievementCompletion = useCallback((update: ComponentUpdate) => {
-    console.log('update', update, update.value[0]?.player_id, playerId);
     if (update.value[0]?.player_id !== BigInt(playerId || 0)) return;
     setCompletions((prev: any) => ({ ...prev, [update.value[0]?.identifier]: update.value[0] }));
   }, [playerId]);

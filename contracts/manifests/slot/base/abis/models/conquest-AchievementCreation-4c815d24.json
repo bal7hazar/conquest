@@ -389,6 +389,10 @@
         "type": "core::felt252"
       },
       {
+        "name": "quest",
+        "type": "core::felt252"
+      },
+      {
         "name": "hidden",
         "type": "core::bool"
       },
@@ -402,26 +406,14 @@
       },
       {
         "name": "title",
-        "type": "core::byte_array::ByteArray"
-      },
-      {
-        "name": "hidden_title",
-        "type": "core::byte_array::ByteArray"
+        "type": "core::felt252"
       },
       {
         "name": "description",
         "type": "core::byte_array::ByteArray"
       },
       {
-        "name": "hidden_description",
-        "type": "core::byte_array::ByteArray"
-      },
-      {
         "name": "icon",
-        "type": "core::felt252"
-      },
-      {
-        "name": "icon_style",
         "type": "core::felt252"
       },
       {

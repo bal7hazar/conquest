@@ -385,11 +385,11 @@
     "name": "achievement::events::index::AchievementCreation",
     "members": [
       {
-        "name": "namespace",
+        "name": "identifier",
         "type": "core::felt252"
       },
       {
-        "name": "identifier",
+        "name": "quest",
         "type": "core::felt252"
       },
       {
@@ -406,22 +406,10 @@
       },
       {
         "name": "title",
-        "type": "core::byte_array::ByteArray"
-      },
-      {
-        "name": "hidden_title",
-        "type": "core::byte_array::ByteArray"
+        "type": "core::felt252"
       },
       {
         "name": "description",
-        "type": "core::byte_array::ByteArray"
-      },
-      {
-        "name": "hidden_description",
-        "type": "core::byte_array::ByteArray"
-      },
-      {
-        "name": "image_uri",
         "type": "core::byte_array::ByteArray"
       },
       {

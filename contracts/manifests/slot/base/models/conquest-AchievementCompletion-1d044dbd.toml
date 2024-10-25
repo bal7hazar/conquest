@@ -1,6 +1,6 @@
 kind = "DojoModel"
-class_hash = "0x1bfc433e762613b252857889fe325939e4e8ee8ce451692de2c57a7b788edbd"
-original_class_hash = "0x1bfc433e762613b252857889fe325939e4e8ee8ce451692de2c57a7b788edbd"
+class_hash = "0x3a05992c8ef0381fd01d57c796d2408b660d7b08c62a0cb2e66210a5fee9c19"
+original_class_hash = "0x3a05992c8ef0381fd01d57c796d2408b660d7b08c62a0cb2e66210a5fee9c19"
 abi = "manifests/slot/base/abis/models/conquest-AchievementCompletion-1d044dbd.json"
 tag = "conquest-AchievementCompletion"
 qualified_path = "achievement::events::index::achievement_completion"
@@ -12,7 +12,7 @@ type = "felt252"
 key = true
 
 [[members]]
-name = "identifier"
+name = "quest"
 type = "felt252"
 key = true
 

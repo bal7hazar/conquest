@@ -4,7 +4,7 @@
 trait IActions<TContractState> {
     fn signup(self: @TContractState, name: felt252,);
     fn conquest(self: @TContractState);
-    fn verify(self: @TContractState, quest: u8, tile_ids: Array<u32>,);
+    fn verify(self: @TContractState, quest: u8);
 }
 
 #[dojo::contract]
@@ -83,8 +83,8 @@ mod Actions {
             self.questable.assess(self.world(), Quest::Conqueror);
         }
 
-        fn verify(self: @ContractState, quest: u8, mut tile_ids: Array<u32>) {
-            self.questable.verify(self.world(), quest.into(), ref tile_ids)
+        fn verify(self: @ContractState, quest: u8) {
+            self.questable.assess(self.world(), quest.into())
         }
     }
 }

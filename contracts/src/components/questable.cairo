@@ -19,7 +19,9 @@ mod QuestableComponent {
     use conquest::store::{Store, StoreTrait};
     use conquest::models::player::{Player, PlayerTrait, PlayerAssert};
     use conquest::models::tile::{Tile, TileTrait, TileAssert};
-    use conquest::types::quest::{Quest, QuestTrait, QUEST_COUNT};
+    use conquest::types::achievement::{Achievement, AchievementTrait, ACHIEVEMENT_COUNT};
+    use conquest::types::quest::{Quest, QuestTrait};
+
 
     // Storage
 
@@ -42,60 +44,23 @@ mod QuestableComponent {
         fn initialize(self: @ComponentState<TContractState>, world: IWorldDispatcher,) {
             // [Event] Emit quest creation events
             let mut achievable = get_dep_component!(self, InternalImpl);
-            let mut quest_id: u8 = QUEST_COUNT;
-            while quest_id > 0 {
-                let quest: Quest = quest_id.into();
+            let mut achievement_id: u8 = ACHIEVEMENT_COUNT;
+            while achievement_id > 0 {
+                let achievement: Achievement = achievement_id.into();
                 achievable
                     .create(
                         world,
-                        identifier: quest.identifier(),
-                        hidden: quest.hidden(),
-                        points: quest.points(),
-                        total: quest.total(),
-                        title: quest.title(),
-                        hidden_title: quest.hidden_title(),
-                        description: quest.description(),
-                        hidden_description: quest.hidden_description(),
-                        icon: quest.icon(),
-                        icon_style: quest.icon_style(),
+                        identifier: achievement.identifier(),
+                        quest: achievement.quest(),
+                        hidden: achievement.hidden(),
+                        points: achievement.points(),
+                        total: achievement.total(),
+                        title: achievement.title(),
+                        description: achievement.description(),
+                        icon: achievement.icon(),
                     );
-                quest_id -= 1;
+                achievement_id -= 1;
             }
-        }
-
-        fn verify(
-            self: @ComponentState<TContractState>,
-            world: IWorldDispatcher,
-            quest: Quest,
-            ref tile_ids: Array<u32>,
-        ) {
-            // [Setup] Datastore
-            let store: Store = StoreTrait::new(world);
-
-            // [Check] Player exists
-            let player_id: felt252 = get_caller_address().into();
-            let mut player = store.get_player(player_id);
-            player.assert_is_created();
-
-            // [Compute] Tiles
-            let mut tiles: Array<Tile> = array![];
-            while let Option::Some(tile_id) = tile_ids.pop_front() {
-                let tile = store.get_tile(tile_id);
-                tiles.append(tile);
-            };
-
-            // [Effect] Verify quest completion
-            let (progress, _total) = quest.completion(ref tiles, player_id);
-
-            // [Event] Emit quest completion event
-            let mut achievable = get_dep_component!(self, InternalImpl);
-            achievable
-                .update(
-                    world,
-                    player_id: player_id,
-                    identifier: quest.identifier(),
-                    count: progress.into(),
-                );
         }
 
         fn assess(self: @ComponentState<TContractState>, world: IWorldDispatcher, quest: Quest,) {
@@ -109,8 +74,7 @@ mod QuestableComponent {
 
             // [Event] Emit quest completion event
             let mut achievable = get_dep_component!(self, InternalImpl);
-            achievable
-                .update(world, player_id: player_id, identifier: quest.identifier(), count: 1,);
+            achievable.update(world, player_id, quest.identifier(), count: 1,);
         }
     }
 }

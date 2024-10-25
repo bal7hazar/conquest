@@ -179,10 +179,6 @@
           {
             "name": "quest",
             "type": "core::integer::u8"
-          },
-          {
-            "name": "tile_ids",
-            "type": "core::array::Array::<core::integer::u32>"
           }
         ],
         "outputs": [],
