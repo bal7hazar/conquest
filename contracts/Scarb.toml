@@ -11,7 +11,7 @@ dev = "sozo clean && sozo build --typescript && sozo migrate plan && sozo migrat
 
 [dependencies]
 dojo = { git = "https://github.com/dojoengine/dojo", tag = "v1.0.0-alpha.14" }
-achievement = { git = "https://github.com/cartridge-gg/quest", rev = "ada22f6" }
+achievement = { git = "https://github.com/cartridge-gg/quest", rev = "358f418" }
 
 [[target.dojo]]
 build-external-contracts = [
