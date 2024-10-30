@@ -19,7 +19,7 @@ mod QuestableComponent {
     use conquest::store::{Store, StoreTrait};
     use conquest::models::player::{Player, PlayerTrait, PlayerAssert};
     use conquest::models::tile::{Tile, TileTrait, TileAssert};
-    use conquest::types::achievement::{Achievement, AchievementTrait, ACHIEVEMENT_COUNT};
+    use conquest::types::trophy::{Trophy, TrophyTrait, TROPHY_COUNT};
     use conquest::types::quest::{Quest, QuestTrait};
 
 
@@ -44,22 +44,24 @@ mod QuestableComponent {
         fn initialize(self: @ComponentState<TContractState>, world: IWorldDispatcher,) {
             // [Event] Emit quest creation events
             let mut achievable = get_dep_component!(self, InternalImpl);
-            let mut achievement_id: u8 = ACHIEVEMENT_COUNT;
-            while achievement_id > 0 {
-                let achievement: Achievement = achievement_id.into();
+            let mut trophy_id: u8 = TROPHY_COUNT;
+            while trophy_id > 0 {
+                let trophy: Trophy = trophy_id.into();
                 achievable
                     .create(
                         world,
-                        identifier: achievement.identifier(),
-                        quest: achievement.quest(),
-                        hidden: achievement.hidden(),
-                        points: achievement.points(),
-                        total: achievement.total(),
-                        title: achievement.title(),
-                        description: achievement.description(),
-                        icon: achievement.icon(),
+                        id: trophy.identifier(),
+                        hidden: trophy.hidden(),
+                        index: trophy.index(),
+                        points: trophy.points(),
+                        group: trophy.group(),
+                        icon: trophy.icon(),
+                        title: trophy.title(),
+                        description: trophy.description(),
+                        tasks: trophy.tasks(),
+                        data: trophy.data(),
                     );
-                achievement_id -= 1;
+                trophy_id -= 1;
             }
         }
 

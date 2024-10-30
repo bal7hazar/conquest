@@ -1,5 +1,4 @@
-use conquest::elements::quests::interface::{QuestTrait, Tile};
-use conquest::helpers::dater::Dater;
+use conquest::elements::quests::interface::QuestTrait;
 
 impl Battlelord of QuestTrait {
     #[inline]
@@ -8,7 +7,11 @@ impl Battlelord of QuestTrait {
     }
 
     #[inline]
-    fn completion(ref tiles: Array<Tile>, player_id: felt252) -> (u16, u16) {
-        (0, 100)
+    fn description(difficulty: u8, count: u32) -> ByteArray {
+        match count {
+            0 => "",
+            1 => "Win 1 battle",
+            _ => format!("Win {} battles", count),
+        }
     }
 }

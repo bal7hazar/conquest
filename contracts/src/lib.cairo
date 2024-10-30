@@ -1,7 +1,7 @@
 mod store;
 
 mod elements {
-    mod achievements {
+    mod trophies {
         mod interface;
         mod squire;
         mod explorer;
@@ -30,7 +30,7 @@ mod elements {
 }
 
 mod types {
-    mod achievement;
+    mod trophy;
     mod quest;
 }
 

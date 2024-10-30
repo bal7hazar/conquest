@@ -1,7 +1,6 @@
-use conquest::elements::achievements::interface::{AchievementTrait, Quest, QuestTrait};
+use conquest::elements::trophies::interface::{TrophyTrait, Task, Quest, QuestTrait};
 
-
-impl Breeder of AchievementTrait {
+impl Breeder of TrophyTrait {
     #[inline]
     fn identifier(level: u8) -> felt252 {
         match level {
@@ -13,13 +12,13 @@ impl Breeder of AchievementTrait {
     }
 
     #[inline]
-    fn quest(level: u8) -> felt252 {
-        Quest::Breeder.identifier()
+    fn hidden(level: u8) -> bool {
+        false
     }
 
     #[inline]
-    fn hidden(level: u8) -> bool {
-        false
+    fn index(level: u8) -> u8 {
+        level
     }
 
     #[inline]
@@ -33,13 +32,13 @@ impl Breeder of AchievementTrait {
     }
 
     #[inline]
-    fn total(level: u8) -> u32 {
-        match level {
-            0 => 1000,
-            1 => 10000,
-            2 => 100000,
-            _ => 0,
-        }
+    fn group() -> felt252 {
+        'Breeder'
+    }
+
+    #[inline]
+    fn icon(level: u8) -> felt252 {
+        'fa-democrat'
     }
 
     #[inline]
@@ -54,16 +53,18 @@ impl Breeder of AchievementTrait {
 
     #[inline]
     fn description(level: u8) -> ByteArray {
-        match level {
-            0 => "Consume a total of 1,000 donkeys.",
-            1 => "Consume a total of 10,000 donkeys.",
-            2 => "Consume a total of 100,000 donkeys.",
-            _ => "",
-        }
+        "A stubborn mule is still better than no mule at all"
     }
 
     #[inline]
-    fn icon(level: u8) -> felt252 {
-        'fa-democrat'
+    fn tasks(level: u8) -> Span<Task> {
+        let difficulty: u8 = 0;
+        let count: u32 = match level {
+            0 => 1000,
+            1 => 10000,
+            2 => 100000,
+            _ => 0,
+        };
+        Quest::Breeder.tasks(difficulty, count)
     }
 }

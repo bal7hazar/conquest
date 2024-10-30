@@ -1,5 +1,4 @@
-use conquest::elements::quests::interface::{QuestTrait, Tile};
-use conquest::helpers::dater::Dater;
+use conquest::elements::quests::interface::QuestTrait;
 
 impl Breeder of QuestTrait {
     #[inline]
@@ -8,7 +7,7 @@ impl Breeder of QuestTrait {
     }
 
     #[inline]
-    fn completion(ref tiles: Array<Tile>, player_id: felt252) -> (u16, u16) {
-        (0, 100)
+    fn description(difficulty: u8, count: u32) -> ByteArray {
+        format!("Consume a total of {} donkeys", count)
     }
 }

@@ -11,14 +11,15 @@ dev = "sozo clean && sozo build --typescript && sozo migrate plan && sozo migrat
 
 [dependencies]
 dojo = { git = "https://github.com/dojoengine/dojo", tag = "v1.0.0-alpha.14" }
-achievement = { git = "https://github.com/cartridge-gg/quest", rev = "bb5ced4" }
+achievement = { git = "https://github.com/cartridge-gg/quest", rev = "dbae8b5" }
 
 [[target.dojo]]
 build-external-contracts = [
     "achievement::models::index::Game",
     "achievement::models::index::Achievement",
-    "achievement::events::index::AchievementCreation",
-    "achievement::events::index::AchievementCompletion",
+    "achievement::events::index::Trophy",
+    "achievement::events::index::Task",
+    "achievement::events::index::Progress",
 ]
 
 [profile.slot]

@@ -1,7 +1,6 @@
-use conquest::elements::achievements::interface::{AchievementTrait, Quest, QuestTrait};
+use conquest::elements::trophies::interface::{TrophyTrait, Task, Quest, QuestTrait};
 
-
-impl Battlelord of AchievementTrait {
+impl Battlelord of TrophyTrait {
     #[inline]
     fn identifier(level: u8) -> felt252 {
         match level {
@@ -13,13 +12,13 @@ impl Battlelord of AchievementTrait {
     }
 
     #[inline]
-    fn quest(level: u8) -> felt252 {
-        Quest::Battlelord.identifier()
+    fn hidden(level: u8) -> bool {
+        false
     }
 
     #[inline]
-    fn hidden(level: u8) -> bool {
-        false
+    fn index(level: u8) -> u8 {
+        level
     }
 
     #[inline]
@@ -33,13 +32,13 @@ impl Battlelord of AchievementTrait {
     }
 
     #[inline]
-    fn total(level: u8) -> u32 {
-        match level {
-            0 => 1,
-            1 => 10,
-            2 => 100,
-            _ => 0,
-        }
+    fn group() -> felt252 {
+        'Battlelord'
+    }
+
+    #[inline]
+    fn icon(level: u8) -> felt252 {
+        'fa-helmet-battle'
     }
 
     #[inline]
@@ -54,16 +53,18 @@ impl Battlelord of AchievementTrait {
 
     #[inline]
     fn description(level: u8) -> ByteArray {
-        match level {
-            0 => "Win 1 battle.",
-            1 => "Win 10 battles.",
-            2 => "Win 100 battles.",
-            _ => "",
-        }
+        "Death smiles at us all. All we can do is smile back"
     }
 
     #[inline]
-    fn icon(level: u8) -> felt252 {
-        'fa-helmet-battle'
+    fn tasks(level: u8) -> Span<Task> {
+        let difficulty: u8 = 0;
+        let count: u32 = match level {
+            0 => 1,
+            1 => 10,
+            2 => 100,
+            _ => 0,
+        };
+        Quest::Battlelord.tasks(difficulty, count)
     }
 }

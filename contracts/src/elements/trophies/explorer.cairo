@@ -1,7 +1,6 @@
-use conquest::elements::achievements::interface::{AchievementTrait, Quest, QuestTrait};
+use conquest::elements::trophies::interface::{TrophyTrait, Task, Quest, QuestTrait};
 
-
-impl Explorer of AchievementTrait {
+impl Explorer of TrophyTrait {
     #[inline]
     fn identifier(level: u8) -> felt252 {
         match level {
@@ -13,13 +12,13 @@ impl Explorer of AchievementTrait {
     }
 
     #[inline]
-    fn quest(level: u8) -> felt252 {
-        Quest::Explorer.identifier()
+    fn hidden(level: u8) -> bool {
+        false
     }
 
     #[inline]
-    fn hidden(level: u8) -> bool {
-        false
+    fn index(level: u8) -> u8 {
+        level
     }
 
     #[inline]
@@ -33,12 +32,17 @@ impl Explorer of AchievementTrait {
     }
 
     #[inline]
-    fn total(level: u8) -> u32 {
+    fn group() -> felt252 {
+        'Explorer'
+    }
+
+    #[inline]
+    fn icon(level: u8) -> felt252 {
         match level {
-            0 => 10,
-            1 => 100,
-            2 => 1000,
-            _ => 0,
+            0 => 'fa-mountain',
+            1 => 'fa-mountains',
+            2 => 'fa-mountain-sun',
+            _ => '',
         }
     }
 
@@ -54,21 +58,18 @@ impl Explorer of AchievementTrait {
 
     #[inline]
     fn description(level: u8) -> ByteArray {
-        match level {
-            0 => "Explore 10 tiles.",
-            1 => "Explore 100 tiles.",
-            2 => "Explore 1000 tiles.",
-            _ => "",
-        }
+        "The world is a book, and those who do not travel read only one page"
     }
 
     #[inline]
-    fn icon(level: u8) -> felt252 {
-        match level {
-            0 => 'fa-mountain',
-            1 => 'fa-mountains',
-            2 => 'fa-mountain-sun',
-            _ => '',
-        }
+    fn tasks(level: u8) -> Span<Task> {
+        let difficulty: u8 = 0;
+        let count: u32 = match level {
+            0 => 10,
+            1 => 100,
+            2 => 1000,
+            _ => 0,
+        };
+        Quest::Explorer.tasks(difficulty, count)
     }
 }

@@ -1,7 +1,6 @@
-use conquest::elements::achievements::interface::{AchievementTrait, Quest, QuestTrait};
+use conquest::elements::trophies::interface::{TrophyTrait, Task, Quest, QuestTrait};
 
-
-impl Conqueror of AchievementTrait {
+impl Conqueror of TrophyTrait {
     #[inline]
     fn identifier(level: u8) -> felt252 {
         match level {
@@ -13,8 +12,8 @@ impl Conqueror of AchievementTrait {
     }
 
     #[inline]
-    fn quest(level: u8) -> felt252 {
-        Quest::Conqueror.identifier()
+    fn index(level: u8) -> u8 {
+        level
     }
 
     #[inline]
@@ -33,12 +32,17 @@ impl Conqueror of AchievementTrait {
     }
 
     #[inline]
-    fn total(level: u8) -> u32 {
+    fn group() -> felt252 {
+        'Conqueror'
+    }
+
+    #[inline]
+    fn icon(level: u8) -> felt252 {
         match level {
-            0 => 1,
-            1 => 5,
-            2 => 10,
-            _ => 0,
+            0 => 'fa-sword',
+            1 => 'fa-swords',
+            2 => 'fa-khanda',
+            _ => '',
         }
     }
 
@@ -54,21 +58,18 @@ impl Conqueror of AchievementTrait {
 
     #[inline]
     fn description(level: u8) -> ByteArray {
-        match level {
-            0 => "Conquer 1 realm.",
-            1 => "Conquer 5 realms.",
-            2 => "Conquer 10 realms.",
-            _ => "",
-        }
+        "Power is not a means, it is an end"
     }
 
     #[inline]
-    fn icon(level: u8) -> felt252 {
-        match level {
-            0 => 'fa-sword',
-            1 => 'fa-swords',
-            2 => 'fa-khanda',
-            _ => '',
-        }
+    fn tasks(level: u8) -> Span<Task> {
+        let difficulty: u8 = 0;
+        let count: u32 = match level {
+            0 => 1,
+            1 => 5,
+            2 => 10,
+            _ => 0,
+        };
+        Quest::Conqueror.tasks(difficulty, count)
     }
 }

@@ -1,13 +1,13 @@
-use conquest::elements::quests::interface::{QuestTrait, Tile};
-use conquest::helpers::dater::Dater;
+use conquest::elements::quests::interface::QuestTrait;
 
 impl Squire of QuestTrait {
     #[inline]
     fn identifier() -> felt252 {
         'SQUIRE'
     }
+
     #[inline]
-    fn completion(ref tiles: Array<Tile>, player_id: felt252) -> (u16, u16) {
-        (0, 100)
+    fn description(difficulty: u8, count: u32) -> ByteArray {
+        "Complete the quests"
     }
 }

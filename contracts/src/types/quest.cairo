@@ -1,3 +1,9 @@
+// External imports
+
+use achievement::events::task::{Task, TaskTrait};
+
+// Internal imports
+
 use conquest::elements::quests;
 use conquest::models::tile::Tile;
 
@@ -40,22 +46,27 @@ impl QuestImpl of QuestTrait {
     }
 
     #[inline]
-    fn completion(self: Quest, ref tiles: Array<Tile>, player_id: felt252) -> (u16, u16) {
+    fn description(self: Quest, difficulty: u8, count: u32) -> ByteArray {
         match self {
-            Quest::None => (0, 100),
-            Quest::Squire => quests::squire::Squire::completion(ref tiles, player_id),
-            Quest::Explorer => quests::explorer::Explorer::completion(ref tiles, player_id),
-            Quest::Battlelord => quests::battlelord::Battlelord::completion(ref tiles, player_id),
-            Quest::Conqueror => quests::conqueror::Conqueror::completion(ref tiles, player_id),
-            Quest::Breeder => quests::breeder::Breeder::completion(ref tiles, player_id),
-            Quest::Strategist => quests::strategist::Strategist::completion(ref tiles, player_id),
-            Quest::Opportunist => quests::opportunist::Opportunist::completion(
-                ref tiles, player_id
-            ),
-            Quest::Ruler => quests::ruler::Ruler::completion(ref tiles, player_id),
-            Quest::Maximalist => quests::maximalist::Maximalist::completion(ref tiles, player_id),
-            Quest::Warlord => quests::warlord::Warlord::completion(ref tiles, player_id),
+            Quest::None => "",
+            Quest::Squire => quests::squire::Squire::description(difficulty, count),
+            Quest::Explorer => quests::explorer::Explorer::description(difficulty, count),
+            Quest::Battlelord => quests::battlelord::Battlelord::description(difficulty, count),
+            Quest::Conqueror => quests::conqueror::Conqueror::description(difficulty, count),
+            Quest::Breeder => quests::breeder::Breeder::description(difficulty, count),
+            Quest::Strategist => quests::strategist::Strategist::description(difficulty, count),
+            Quest::Opportunist => quests::opportunist::Opportunist::description(difficulty, count),
+            Quest::Ruler => quests::ruler::Ruler::description(difficulty, count),
+            Quest::Maximalist => quests::maximalist::Maximalist::description(difficulty, count),
+            Quest::Warlord => quests::warlord::Warlord::description(difficulty, count),
         }
+    }
+
+    #[inline]
+    fn tasks(self: Quest, difficulty: u8, count: u32) -> Span<Task> {
+        let task_id: felt252 = self.identifier();
+        let description: ByteArray = self.description(difficulty, count);
+        array![TaskTrait::new(task_id, count, description)].span()
     }
 }
 

@@ -1,5 +1,4 @@
-use conquest::elements::quests::interface::{QuestTrait, Tile};
-use conquest::helpers::dater::Dater;
+use conquest::elements::quests::interface::QuestTrait;
 
 impl Strategist of QuestTrait {
     #[inline]
@@ -8,7 +7,12 @@ impl Strategist of QuestTrait {
     }
 
     #[inline]
-    fn completion(ref tiles: Array<Tile>, player_id: felt252) -> (u16, u16) {
-        (0, 100)
+    fn description(difficulty: u8, count: u32) -> ByteArray {
+        match difficulty {
+            0 => "Discover a Fragment Mine",
+            1 => "Conquer a Fragment Mine",
+            2 => "Build a Hyperstructure",
+            _ => "",
+        }
     }
 }

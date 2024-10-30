@@ -1,7 +1,6 @@
-use conquest::elements::achievements::interface::{AchievementTrait, Quest, QuestTrait};
+use conquest::elements::trophies::interface::{TrophyTrait, Task, Quest, QuestTrait};
 
-
-impl Strategist of AchievementTrait {
+impl Strategist of TrophyTrait {
     #[inline]
     fn identifier(level: u8) -> felt252 {
         match level {
@@ -13,13 +12,13 @@ impl Strategist of AchievementTrait {
     }
 
     #[inline]
-    fn quest(level: u8) -> felt252 {
-        Quest::Strategist.identifier()
+    fn hidden(level: u8) -> bool {
+        false
     }
 
     #[inline]
-    fn hidden(level: u8) -> bool {
-        false
+    fn index(level: u8) -> u8 {
+        level
     }
 
     #[inline]
@@ -33,8 +32,18 @@ impl Strategist of AchievementTrait {
     }
 
     #[inline]
-    fn total(level: u8) -> u32 {
-        1
+    fn group() -> felt252 {
+        'Strategist'
+    }
+
+    #[inline]
+    fn icon(level: u8) -> felt252 {
+        match level {
+            0 => 'fa-chess-pawn-piece',
+            1 => 'fa-chess-knight-piece',
+            2 => 'fa-chess-king-piece',
+            _ => '',
+        }
     }
 
     #[inline]
@@ -49,21 +58,12 @@ impl Strategist of AchievementTrait {
 
     #[inline]
     fn description(level: u8) -> ByteArray {
-        match level {
-            0 => "Discover a Fragment Mine.",
-            1 => "Conquer a Fragment Mine.",
-            2 => "Build a Hyperstructure.",
-            _ => "",
-        }
+        "Plans are nothing; planning is everything"
     }
 
     #[inline]
-    fn icon(level: u8) -> felt252 {
-        match level {
-            0 => 'fa-chess-pawn-piece',
-            1 => 'fa-chess-knight-piece',
-            2 => 'fa-chess-king-piece',
-            _ => '',
-        }
+    fn tasks(level: u8) -> Span<Task> {
+        let count: u32 = 1;
+        Quest::Strategist.tasks(level, count)
     }
 }
