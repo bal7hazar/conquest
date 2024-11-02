@@ -9,14 +9,19 @@ trait IActions<TContractState> {
 
 #[dojo::contract]
 mod Actions {
+    // Dojo imports
+
+    use dojo::world::WorldStorage;
+
     // Component imports
 
-    use achievement::components::achievable::AchievableComponent;
+    use bushido_trophy::components::achievable::AchievableComponent;
     use conquest::components::signable::SignableComponent;
     use conquest::components::playable::PlayableComponent;
     use conquest::components::questable::QuestableComponent;
 
     // Internal imports
+
     use conquest::types::quest::Quest;
 
     // Local imports
@@ -65,8 +70,8 @@ mod Actions {
 
     // Constructor
 
-    fn dojo_init(world: @IWorldDispatcher,) {
-        self.questable.initialize(world);
+    fn dojo_init(self: @ContractState,) {
+        self.questable.initialize(self.world_storage());
     }
 
     // Implementations
@@ -74,17 +79,25 @@ mod Actions {
     #[abi(embed_v0)]
     impl ActionsImpl of IActions<ContractState> {
         fn signup(self: @ContractState, name: felt252) {
-            self.signable.signup(self.world(), name);
-            self.questable.assess(self.world(), Quest::Squire)
+            self.signable.signup(self.world_storage(), name);
+            self.questable.assess(self.world_storage(), Quest::Squire)
         }
 
         fn conquest(self: @ContractState) {
-            self.playable.conquest(self.world());
-            self.questable.assess(self.world(), Quest::Conqueror);
+            self.playable.conquest(self.world_storage());
+            self.questable.assess(self.world_storage(), Quest::Conqueror);
         }
 
         fn verify(self: @ContractState, quest: u8) {
-            self.questable.assess(self.world(), quest.into())
+            self.questable.assess(self.world_storage(), quest.into())
+        }
+    }
+
+    #[generate_trait]
+    impl Private of PrivateTrait {
+        #[inline]
+        fn world_storage(self: @ContractState) -> WorldStorage {
+            self.world(@"conquest")
         }
     }
 }

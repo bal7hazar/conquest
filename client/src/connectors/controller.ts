@@ -1,5 +1,5 @@
 import { Connector } from "@starknet-react/core";
-import ControllerConnector from "@cartridge/connector";
+import ControllerConnector from "@cartridge/connector/controller";;
 import { getContractByName } from "@dojoengine/core";
 import { dojoConfig } from "../../dojo.config";
 
@@ -9,7 +9,6 @@ export const controller = (): { connectors: Connector[] } => {
 
   const config = dojoConfig();
   const actions = getContractByName(config.manifest, namespace, "Actions")?.address;
-  const paymaster = { caller: "0x414e595f43414c4c4552" };
   const rpc = import.meta.env.VITE_PUBLIC_NODE_URL;
   const policies = [
     {
@@ -29,7 +28,6 @@ export const controller = (): { connectors: Connector[] } => {
   const cartridge = new ControllerConnector({
     rpc,
     policies,
-    paymaster,
   }) as never as Connector;
 
   return { connectors: [cartridge] };

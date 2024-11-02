@@ -6,8 +6,7 @@ mod PlayableComponent {
 
     // Dojo imports
 
-    use dojo::world::IWorldDispatcher;
-    use dojo::world::IWorldDispatcherTrait;
+    use dojo::world::{WorldStorage, IWorldDispatcherTrait};
 
     // Internal imports
 
@@ -30,9 +29,9 @@ mod PlayableComponent {
     impl InternalImpl<
         TContractState, +HasComponent<TContractState>
     > of InternalTrait<TContractState> {
-        fn conquest(self: @ComponentState<TContractState>, world: IWorldDispatcher) {
+        fn conquest(self: @ComponentState<TContractState>, world: WorldStorage) {
             // [Setup] Datastore
-            let store: Store = StoreTrait::new(world);
+            let mut store: Store = StoreTrait::new(world);
 
             // [Check] Player exists
             let player_id: felt252 = get_caller_address().into();
@@ -40,7 +39,7 @@ mod PlayableComponent {
             player.assert_is_created();
 
             // [Effect] Create tile
-            let tile_id: u32 = world.uuid();
+            let tile_id: u32 = world.dispatcher.uuid();
             let mut tile: Tile = TileTrait::new(tile_id);
 
             // [Effect] Own tile

@@ -32,13 +32,8 @@ export async function setup({ ...config }: Config) {
   const sync = getSyncEntities(
     toriiClient,
     contractModels as any,
-    [],
-  );
-  const eventSync = getSyncEvents(
-    toriiClient,
-    contractModels as any,
     undefined,
-    []
+    [],
   );
 
   const dojoProvider = new DojoProvider(config.manifest, config.rpcUrl);
@@ -73,12 +68,11 @@ export async function setup({ ...config }: Config) {
     client,
     clientModels,
     contractModels,
-    systemCalls: systems({ client, clientModels }),
+    systemCalls: systems({ provider: rpcProvider, client, clientModels }),
     config,
     world,
     burnerManager,
     rpcProvider,
     sync,
-    eventSync,
   };
 }

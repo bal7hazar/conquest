@@ -22,12 +22,6 @@ export interface Verify {
     quest: number;
 }
 
-export interface ConquestVerify {
-    account: Account;
-    owned_tile_ids: number[];
-    consecutive_tile_ids: number[];
-}
-
 export async function setupWorld(provider: DojoProvider) {
     // System definitions for `conquest-Actions` contract
     function Actions() {

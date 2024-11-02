@@ -6,13 +6,12 @@ mod QuestableComponent {
 
     // Dojo imports
 
-    use dojo::world::IWorldDispatcher;
-    use dojo::contract::{IContract, IContractDispatcher, IContractDispatcherTrait};
+    use dojo::world::WorldStorage;
 
     // External imports
 
-    use achievement::components::achievable::AchievableComponent;
-    use achievement::components::achievable::AchievableComponent::InternalImpl as AchievableInternalImpl;
+    use bushido_trophy::components::achievable::AchievableComponent;
+    use bushido_trophy::components::achievable::AchievableComponent::InternalImpl as AchievableInternalImpl;
 
     // Internal imports
 
@@ -38,10 +37,9 @@ mod QuestableComponent {
     impl InternalImpl<
         TContractState,
         +HasComponent<TContractState>,
-        +IContract<TContractState>,
         impl InternalImpl: AchievableComponent::HasComponent<TContractState>,
     > of InternalTrait<TContractState> {
-        fn initialize(self: @ComponentState<TContractState>, world: IWorldDispatcher,) {
+        fn initialize(self: @ComponentState<TContractState>, world: WorldStorage,) {
             // [Event] Emit quest creation events
             let mut achievable = get_dep_component!(self, InternalImpl);
             let mut trophy_id: u8 = TROPHY_COUNT;
@@ -65,7 +63,7 @@ mod QuestableComponent {
             }
         }
 
-        fn assess(self: @ComponentState<TContractState>, world: IWorldDispatcher, quest: Quest,) {
+        fn assess(self: @ComponentState<TContractState>, world: WorldStorage, quest: Quest,) {
             // [Setup] Datastore
             let store: Store = StoreTrait::new(world);
 

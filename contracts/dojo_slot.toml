@@ -12,7 +12,9 @@ telegram = "https://t.me/dojoengine"
 
 [namespace]
 default = "conquest"
-mappings = { "achievement" = "conquest" }
+
+[writers]
+conquest = ["conquest-Actions"]
 
 [env]
 rpc_url = "https://api.cartridge.gg/x/conquest/katana"

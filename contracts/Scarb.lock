@@ -2,9 +2,9 @@
 version = 1
 
 [[package]]
-name = "achievement"
+name = "bushido_trophy"
 version = "0.0.0"
-source = "git+https://github.com/cartridge-gg/quest?rev=dbae8b5#dbae8b57fc5a85969e1caf312637ce558857bb34"
+source = "git+https://github.com/cartridge-gg/bushido?rev=7f3e3cc#7f3e3cccd5e2901b4d0e6c2f3c64acd3146b3daf"
 dependencies = [
  "dojo",
 ]
@@ -13,11 +13,28 @@ dependencies = [
 name = "conquest"
 version = "0.0.0"
 dependencies = [
- "achievement",
+ "bushido_trophy",
  "dojo",
+ "dojo_cairo_test",
 ]
 
 [[package]]
 name = "dojo"
-version = "1.0.0-alpha.4"
-source = "git+https://github.com/dojoengine/dojo?tag=v1.0.0-alpha.14#6bafcb55178888268d86aae9dccef8a1ba6e7542"
+version = "1.0.0-rc.0"
+source = "git+https://github.com/dojoengine/dojo?tag=v1.0.0-rc.0#f4199aec570a395278b8c8748bc46e2f6be3d0c7"
+dependencies = [
+ "dojo_plugin",
+]
+
+[[package]]
+name = "dojo_cairo_test"
+version = "1.0.0-rc.0"
+source = "git+https://github.com/dojoengine/dojo?tag=v1.0.0-rc.0#f4199aec570a395278b8c8748bc46e2f6be3d0c7"
+dependencies = [
+ "dojo",
+]
+
+[[package]]
+name = "dojo_plugin"
+version = "2.8.4"
+source = "git+https://github.com/dojoengine/dojo?tag=v1.0.0-rc.0#f4199aec570a395278b8c8748bc46e2f6be3d0c7"

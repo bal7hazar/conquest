@@ -1,4 +1,4 @@
-use achievement::events::task::Task;
+use bushido_trophy::types::task::Task;
 use conquest::types::quest::{Quest, QuestTrait};
 
 trait TrophyTrait {

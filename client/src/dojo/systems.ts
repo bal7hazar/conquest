@@ -3,15 +3,18 @@ import { toast } from "sonner";
 import * as SystemTypes from "./bindings/contracts.gen";
 import { ClientModels } from "./models";
 import { shortenHex } from "@dojoengine/utils";
-import { Account } from "starknet";
+import { Account, RpcProvider } from "starknet";
 import { World } from "@dojoengine/recs";
+import { DojoProvider } from "@dojoengine/core";
 
 export type SystemCalls = ReturnType<typeof systems>;
 
 export function systems({
+  provider,
   client,
   clientModels,
 }: {
+  provider: RpcProvider;
   client: IWorld;
   clientModels: ClientModels;
 }) {
@@ -74,7 +77,7 @@ export function systems({
         position: toastPlacement,
       });
 
-      const transaction = await account.waitForTransaction(transaction_hash, {
+      const transaction = await provider.waitForTransaction(transaction_hash, {
         retryInterval: 100,
       });
 

@@ -10,7 +10,7 @@ mod SignableComponent {
 
     // Dojo imports
 
-    use dojo::world::IWorldDispatcher;
+    use dojo::world::WorldStorage;
 
     // Internal imports
 
@@ -36,9 +36,9 @@ mod SignableComponent {
     impl InternalImpl<
         TContractState, +HasComponent<TContractState>
     > of InternalTrait<TContractState> {
-        fn signup(self: @ComponentState<TContractState>, world: IWorldDispatcher, name: felt252,) {
+        fn signup(self: @ComponentState<TContractState>, world: WorldStorage, name: felt252,) {
             // [Setup] Datastore
-            let store: Store = StoreTrait::new(world);
+            let mut store: Store = StoreTrait::new(world);
 
             // [Check] Player does not exist
             let player_id: felt252 = get_caller_address().into();

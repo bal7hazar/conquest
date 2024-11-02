@@ -1,4 +1,4 @@
-#[derive(IntrospectPacked, Copy, Drop, Serde)]
+#[derive(Copy, Drop, Serde)]
 #[dojo::model]
 pub struct Player {
     #[key]
@@ -6,7 +6,7 @@ pub struct Player {
     name: felt252,
 }
 
-#[derive(IntrospectPacked, Copy, Drop, Serde)]
+#[derive(Copy, Drop, Serde)]
 #[dojo::model]
 pub struct Tile {
     #[key]

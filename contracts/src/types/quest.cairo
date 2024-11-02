@@ -1,6 +1,6 @@
 // External imports
 
-use achievement::events::task::{Task, TaskTrait};
+use bushido_trophy::types::task::{Task, TaskTrait};
 
 // Internal imports
 

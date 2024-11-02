@@ -1,4 +1,4 @@
-use achievement::events::task::Task;
+use bushido_trophy::types::task::Task;
 use conquest::elements::trophies;
 
 // Constants
@@ -251,7 +251,7 @@ impl TrophyImpl of TrophyTrait {
     #[inline]
     fn tasks(self: Trophy) -> Span<Task> {
         match self {
-            Trophy::None => array![].span(),
+            Trophy::None => [].span(),
             Trophy::Squire => trophies::squire::Squire::tasks(0),
             Trophy::ExplorerI => trophies::explorer::Explorer::tasks(0),
             Trophy::ExplorerII => trophies::explorer::Explorer::tasks(1),

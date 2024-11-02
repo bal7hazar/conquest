@@ -2,11 +2,11 @@
 
 // Dojo imports
 
-use dojo::world::{IWorldDispatcher, IWorldDispatcherTrait};
+use dojo::world::WorldStorage;
+use dojo::model::ModelStorage;
 
 // Models imports
 
-use conquest::models::index::{PlayerStore, TileStore};
 use conquest::models::player::Player;
 use conquest::models::tile::Tile;
 
@@ -14,7 +14,7 @@ use conquest::models::tile::Tile;
 
 #[derive(Copy, Drop)]
 struct Store {
-    world: IWorldDispatcher,
+    world: WorldStorage,
 }
 
 // Implementations
@@ -22,27 +22,27 @@ struct Store {
 #[generate_trait]
 impl StoreImpl of StoreTrait {
     #[inline]
-    fn new(world: IWorldDispatcher) -> Store {
+    fn new(world: WorldStorage) -> Store {
         Store { world: world }
     }
 
     #[inline]
     fn get_player(self: Store, player_id: felt252) -> Player {
-        PlayerStore::get(self.world, player_id)
+        self.world.read_model(player_id)
     }
 
     #[inline]
     fn get_tile(self: Store, tile_id: u32) -> Tile {
-        TileStore::get(self.world, tile_id)
+        self.world.read_model(tile_id)
     }
 
     #[inline]
-    fn set_player(self: Store, player: Player) {
-        set!(self.world, (player))
+    fn set_player(ref self: Store, player: Player) {
+        self.world.write_model(@player);
     }
 
     #[inline]
-    fn set_tile(self: Store, tile: Tile) {
-        set!(self.world, (tile))
+    fn set_tile(ref self: Store, tile: Tile) {
+        self.world.write_model(@tile);
     }
 }
